@@ -1,0 +1,65 @@
+﻿<UserControl
+    x:Class="SkillApp.WPF.AppCore.Views.Modal.SkillFactoryView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SkillApp.WPF.AppCore.Views.Modal"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:modalVMs="clr-namespace:SkillApp.WPF.AppCore.ViewModels.Modal"
+    d:DataContext="{d:DesignInstance Type=modalVMs:SkillFactoryViewModel}"
+    d:DesignHeight="{Binding ContentHeight}"
+    d:DesignWidth="{Binding ContentWidth}"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel>
+            <Grid>
+                <TextBlock
+                    Margin="0,0,0,20"
+                    FontSize="18"
+                    FontWeight="Medium"
+                    Text="Создание навыка" />
+
+                <Button
+                    Width="32"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Command="{Binding CloseModalControlCommand}"
+                    IsCancel="True"
+                    Style="{StaticResource IconButton}">
+                    <Viewbox Width="16" Height="16">
+                        <Path
+                            Data="m12.45 37.65-2.1-2.1L21.9 24 10.35 12.45l2.1-2.1L24 21.9l11.55-11.55 2.1 2.1L26.1 24l11.55 11.55-2.1 2.1L24 26.1Z"
+                            Fill="Black"
+                            Stretch="Fill"
+                            Stroke="Black" />
+                    </Viewbox>
+                </Button>
+            </Grid>
+
+            <Grid>
+                <StackPanel>
+                    <StackPanel>
+                        <TextBlock FontSize="14" Text="Формулировка навыка" />
+                        <TextBox />
+                    </StackPanel>
+
+                    <StackPanel Margin="0,20,0,0">
+                        <TextBlock FontSize="14" Text="Вес в баллах" />
+                        <TextBox />
+                    </StackPanel>
+                </StackPanel>
+
+
+
+            </Grid>
+
+            <Button
+                Margin="0,300,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Command="{Binding ActionCommand}"
+                Content="Добавить навык"
+                Style="{StaticResource BrandMediumButton}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

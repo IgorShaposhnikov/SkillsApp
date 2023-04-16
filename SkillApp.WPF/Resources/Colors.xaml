@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="BrandColor">#7C45F6</Color>
+    <SolidColorBrush x:Key="BrandColorSolidBrush" Color="{DynamicResource BrandColor}" />
+
+    <Color x:Key="DataGridColumnHeader">#edf2f6</Color>
+    <SolidColorBrush x:Key="SolidColorBrushDataGridColumnHeader" Color="{DynamicResource DataGridColumnHeader}" />
+
+    <Color x:Key="DataGridBorderColor">#cbd5df</Color>
+    <SolidColorBrush x:Key="SolidColorBrushDataGridBorderColor" Color="{DynamicResource DataGridBorderColor}" />
+</ResourceDictionary>
