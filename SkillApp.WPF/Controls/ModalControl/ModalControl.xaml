@@ -13,7 +13,7 @@
 
                     <Grid Visibility="{TemplateBinding IsOpen, Converter={StaticResource BooleanToVisibilityConverter}}">
                         <Grid.Background>
-                            <SolidColorBrush Opacity="0.7" Color="{TemplateBinding DimmingBackground}" />
+                            <SolidColorBrush Opacity="0.7" Color="Black" />
                         </Grid.Background>
 
                         <Border
@@ -22,7 +22,7 @@
                             Padding="{TemplateBinding ContentPadding}"
                             Background="{TemplateBinding ContentBackground}"
                             CornerRadius="5">
-                            <ContentPresenter />
+                            <ContentPresenter Content="{TemplateBinding Content}" />
                         </Border>
                     </Grid>
                 </ControlTemplate>

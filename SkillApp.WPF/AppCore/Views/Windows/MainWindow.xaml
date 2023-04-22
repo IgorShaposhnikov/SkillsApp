@@ -72,6 +72,6 @@
 
         </Grid>
 
-        <controls:ModalControl Content="{Binding ModalController.CurrentModalContent, Mode=OneWay}" IsOpen="False" />
+        <controls:ModalControl Content="{Binding ModalController.CurrentModalContent, Source={StaticResource MainViewModel}, Mode=OneWay}" IsOpen="{Binding ModalController.IsOpen, Source={StaticResource MainViewModel}}" />
     </Grid>
 </Window>

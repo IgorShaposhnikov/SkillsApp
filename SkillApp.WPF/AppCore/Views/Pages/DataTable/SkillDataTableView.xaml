@@ -44,7 +44,7 @@
                     Height="32"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
-                    Command="{Binding}"
+                    Command="{Binding AddSkillCommand}"
                     Content="Add Skill" />
             </Grid>
         </Border>
