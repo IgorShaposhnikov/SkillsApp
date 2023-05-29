@@ -1,7 +1,7 @@
 ﻿using SkillApp.WPF.Base;
 using SkillApp.WPF.Base.Commands;
 using SkillApp.WPF.Base.Store;
-using SkillApp.WPF.ViewModels.SkillProfiles;
+using SkillApp.WPF.ViewModels.SkillsProfile;
 using System;
 using System.Collections.ObjectModel;
 
@@ -60,20 +60,22 @@ namespace SkillApp.WPF.ViewModels
     {
         public ObservableCollection<TabVMBased> Tabs { get; } = new ObservableCollection<TabVMBased>();
         public INavigationStore NavigationStore { get; } = new NavigationStore();
-
         private Tab<VMBase> _selectedTabItem;
+
+        private readonly SkillsProfileViewModel _skillsProfileVM;
 
         public MainMenuViewModel() 
         {
+            _skillsProfileVM = new SkillsProfileViewModel(ChangeCurrentPage);
             Tabs.Add(
-                new TabVMBased(ChangedCurrentViewModel, "Профили навыков", 0, new SkillProfilesViewModel(ChangeCurrentPage))
+                new TabVMBased(ChangedCurrentViewModel, "Профиль навыков", 0, _skillsProfileVM)
             );
-            Tabs.Add(
-                new TabVMBased(ChangedCurrentViewModel, "Test навыков", 1, null)
-            );
+            //Tabs.Add(
+            //    new TabVMBased(ChangedCurrentViewModel, "Test навыков", 1, null)
+            //);
 
             Tabs[0].IsChecked = true;
-            Tabs[1].IsEnable = false;
+            //Tabs[1].IsEnable = false;
             NavigationStore.CurrentViewModel = Tabs[0].Content;
             _selectedTabItem = Tabs[0];
         }
@@ -89,6 +91,11 @@ namespace SkillApp.WPF.ViewModels
         {
             _selectedTabItem = tab;
             NavigationStore.CurrentViewModel = tab.Content;
+        }
+
+        public void LoadSkillsProfile(string path) 
+        {
+            _skillsProfileVM.Load(path);
         }
     }
 }

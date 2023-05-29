@@ -82,4 +82,36 @@
     <Style x:Key="CenterVerticalHorizontalAlingmentTextBlock">
         <Setter Property="TextBlock.TextAlignment" Value="Center" />
     </Style>
+
+
+    <!--  Expander Button  -->
+    <ControlTemplate x:Key="ExpanderToggleButton" TargetType="{x:Type ToggleButton}">
+        <Border
+            x:Name="Border"
+            Background="Red"
+            BorderThickness="0,0,1,0"
+            CornerRadius="2,0,0,0">
+            <Grid Background="Black">
+                <Path
+                    x:Name="CollapsedArrow"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Data="M 0 0 L 4 4 L 8 0 Z">
+                    <Path.Fill>
+                        <SolidColorBrush Color="{DynamicResource GlyphColor}" />
+                    </Path.Fill>
+                </Path>
+                <Path
+                    x:Name="ExpandededArrow"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Data="M 0 4 L 4 0 L 8 4 Z"
+                    Visibility="Collapsed">
+                    <Path.Fill>
+                        <SolidColorBrush Color="{DynamicResource GlyphColor}" />
+                    </Path.Fill>
+                </Path>
+            </Grid>
+        </Border>
+    </ControlTemplate>
 </ResourceDictionary>

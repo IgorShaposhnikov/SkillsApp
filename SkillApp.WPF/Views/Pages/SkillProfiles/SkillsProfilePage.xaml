@@ -1,0 +1,191 @@
+﻿<UserControl
+    x:Class="SkillApp.WPF.Views.Pages.SkillsProfile.SkillsProfilePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SkillApp.WPF.Views.Pages.SkillsProfile"
+    xmlns:localVM="clr-namespace:SkillApp.WPF.ViewModels.SkillsProfile"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DataContext="{d:DesignInstance Type=localVM:SkillsProfileViewModel}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Border Padding="4">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border Padding="5,10,50,10" Background="Transparent">
+                <Grid ShowGridLines="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="0.2*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Medium"
+                            Text="Навыки" />
+
+                        <DockPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    FontSize="14"
+                                    FontWeight="Medium"
+                                    Text="Должность: " />
+                                <TextBox FontSize="14" Text="{Binding Profile.Name, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                            <TextBlock Margin="16,0,0,0" FontSize="14">
+                                <Run FontWeight="Medium" Text="Кол-во навыков: " />
+                                <Run Text="{Binding Profile.SkillsCount, Mode=OneWay}" />
+                            </TextBlock>
+                            <TextBlock Margin="16,0,0,0" FontSize="14">
+                                <Run FontWeight="Medium" Text="Общее количество баллов: " />
+                                <Run Text="{Binding Profile.SumScore, Mode=OneWay}" />
+                            </TextBlock>
+                        </DockPanel>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Button
+                            Height="32"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding OpenSkillFactoryCommand}"
+                            Content="Добавить навык" />
+                        <Button
+                            Height="32"
+                            Margin="8,0,0,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding SaveSkillsProfileCommand}"
+                            Content="Сохранить профиль" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <DataGrid
+                Grid.Row="1"
+                AlternatingRowBackground="#F5EEF8"
+                AlternationCount="2"
+                AutoGenerateColumns="False"
+                BorderBrush="{DynamicResource SolidColorBrushDataGridBorderColor}"
+                BorderThickness="0"
+                GridLinesVisibility="None"
+                HeadersVisibility="Column"
+                ItemsSource="{Binding Profile.Skills}"
+                MaxColumnWidth="600"
+                ScrollViewer.CanContentScroll="True"
+                SelectionUnit="Cell">
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Setter Property="MinHeight" Value="32" />
+                        <Setter Property="BorderBrush" Value="{DynamicResource SolidColorBrushDataGridBorderColor}" />
+                        <Setter Property="TextBlock.FontSize" Value="14" />
+                        <Setter Property="Background" Value="White" />
+                    </Style>
+                </DataGrid.RowStyle>
+
+                <DataGrid.Columns>
+                    <DataGridCheckBoxColumn
+                        Binding="{Binding IsEnabled}"
+                        Header="Is Enabled"
+                        IsReadOnly="False" />
+
+                    <DataGridTextColumn
+                        MinWidth="45"
+                        Binding="{Binding Path=Id}"
+                        Header="№"
+                        IsReadOnly="True">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style BasedOn="{StaticResource CenterVerticalHorizontalAlingmentTextBlock}" />
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn
+                        Binding="{Binding Path=Name}"
+                        Header="Формулировка навыков"
+                        IsReadOnly="True">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style BasedOn="{StaticResource WrappedTextBlock}" />
+                        </DataGridTextColumn.ElementStyle>
+
+                        <DataGridTextColumn.EditingElementStyle>
+                            <Style BasedOn="{StaticResource WrappedTextBlock}" />
+                        </DataGridTextColumn.EditingElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn
+                        MinWidth="55"
+                        MaxWidth="125"
+                        Binding="{Binding Path=Score}"
+                        Header="Вес в баллах"
+                        IsReadOnly="True">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style BasedOn="{StaticResource CenterVerticalHorizontalAlingmentTextBlock}" />
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellSelectedTransparent}" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button
+                                    Command="{Binding Path=DataContext.OpenSkillEditModalCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    CommandParameter="{Binding}"
+                                    Content="Редактировать" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellSelectedTransparent}" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button
+                                    Command="{Binding Path=DataContext.ShowAspectsCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    CommandParameter="{Binding}"
+                                    Content="Показать аспекты" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellSelectedTransparent}" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button
+                                    Command="{Binding Path=DataContext.DeleteSkillCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    CommandParameter="{Binding}"
+                                    Content="Удалить" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <TextBlock
+                Grid.Row="1"
+                Margin="0,256,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                FontSize="28"
+                FontWeight="Medium"
+                Foreground="Black"
+                Opacity="0.8"
+                Text="Навыки отсутствуют">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding DataContext.Profile.Skills.Count, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" Value="0">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </Grid>
+    </Border>
+</UserControl>

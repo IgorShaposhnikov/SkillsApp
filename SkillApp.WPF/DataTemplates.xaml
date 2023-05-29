@@ -1,13 +1,15 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="clr-namespace:SkillApp.WPF.Controls"
+    xmlns:SkillsProfileModalPages="clr-namespace:SkillApp.WPF.Views.Pages.SkillsProfile.Modal"
+    xmlns:SkillsProfileModalVMs="clr-namespace:SkillApp.WPF.ViewModels.SkillsProfile.Modal"
+    xmlns:SkillsProfilePages="clr-namespace:SkillApp.WPF.Views.Pages.SkillsProfile"
+    xmlns:SkillsProfileVMs="clr-namespace:SkillApp.WPF.ViewModels.SkillsProfile"
+    xmlns:converters="clr-namespace:SkillApp.WPF.Converters"
     xmlns:enums="clr-namespace:SkillApp.Core.Enums;assembly=SkillApp.Core"
     xmlns:modalPages="clr-namespace:SkillApp.WPF.Views.Pages.Modal"
-    xmlns:modalViewModels="clr-namespace:SkillApp.WPF.ViewModels.Modal"
+    xmlns:modalVMs="clr-namespace:SkillApp.WPF.ViewModels.Modal"
     xmlns:pages="clr-namespace:SkillApp.WPF.Views.Pages"
-    xmlns:skillProfilesPages="clr-namespace:SkillApp.WPF.Views.Pages.SkillProfiles"
-    xmlns:skillProfilesViewModels="clr-namespace:SkillApp.WPF.ViewModels.SkillProfiles"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:viewmodels="clr-namespace:SkillApp.WPF.ViewModels">
 
@@ -21,7 +23,12 @@
 
     <viewmodels:MainViewModel x:Key="MainVM" />
 
+    <!--  Converters  -->
+    <converters:StringToDoubleConverter x:Key="StringToDoubleConverter" />
+    <converters:EnumToStringConverter x:Key="EnumToStringConverter" />
 
+
+    <!--  DataProviders  -->
     <ObjectDataProvider
         x:Key="aspectTypeFromEnum"
         MethodName="GetValues"
@@ -40,30 +47,42 @@
         </ObjectDataProvider.MethodParameters>
     </ObjectDataProvider>
 
-    <!--  SkillProfiles  -->
-    <DataTemplate DataType="{x:Type skillProfilesViewModels:SkillProfilesViewModel}">
-        <skillProfilesPages:SkillProfilesPage />
+    <!--  SkillsProfile  -->
+    <DataTemplate DataType="{x:Type SkillsProfileVMs:SkillsProfileViewModel}">
+        <SkillsProfilePages:SkillsProfilePage />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type skillProfilesViewModels:SkillAspectsViewModel}">
-        <skillProfilesPages:SkillAspectsView />
+    <DataTemplate DataType="{x:Type SkillsProfileVMs:SkillAspectsViewModel}">
+        <SkillsProfilePages:SkillAspectsView />
     </DataTemplate>
 
-    <!--  Modal  -->
-    <DataTemplate DataType="{x:Type modalViewModels:SkillFactoryModalViewModel}">
-        <modalPages:SkillFactoryPage />
+    <!--  SkillsProfile Modal  -->
+    <DataTemplate DataType="{x:Type SkillsProfileModalVMs:SkillFactoryModalViewModel}">
+        <SkillsProfileModalPages:SkillFactoryPage />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type modalViewModels:SkillEditModalViewModel}">
-        <modalPages:SkillEditModalView />
+    <DataTemplate DataType="{x:Type SkillsProfileModalVMs:SkillEditModalViewModel}">
+        <SkillsProfileModalPages:SkillEditModalView />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type modalViewModels:AspectFactoryModalViewModel}">
-        <modalPages:AspectFactoryModalView />
+    <DataTemplate DataType="{x:Type SkillsProfileModalVMs:AspectFactoryModalViewModel}">
+        <SkillsProfileModalPages:AspectFactoryModalView />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type modalViewModels:AspectEditModalViewModel}">
-        <modalPages:AspectEditModalView />
+    <DataTemplate DataType="{x:Type SkillsProfileModalVMs:AspectEditModalViewModel}">
+        <SkillsProfileModalPages:AspectEditModalView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type SkillsProfileModalVMs:AspectTransferModalViewModel}">
+        <SkillsProfileModalPages:AspectTransferModalView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type SkillsProfileModalVMs:SaveSkillsProfileMenuViewModel}">
+        <SkillsProfileModalPages:SaveSkillProfileMenuView />
     </DataTemplate>
 
     <!--  MainMenu  -->
     <DataTemplate DataType="{x:Type viewmodels:MainMenuViewModel}">
         <pages:MainMenuViewModel />
+    </DataTemplate>
+
+
+    <!--  Modal  -->
+    <DataTemplate DataType="{x:Type modalVMs:ModalDialogWindowViewModel}">
+        <modalPages:ModalDialogWindowView />
     </DataTemplate>
 </ResourceDictionary>

@@ -7,7 +7,7 @@
     <ProjectGuid>{12BE335F-9178-4334-A14A-60E2C0355BE6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SkillApp.WPF</RootNamespace>
-    <AssemblyName>SkillApp.WPF</AssemblyName>
+    <AssemblyName>SkillApp</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -34,6 +34,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SkillApp.WPF.Runtime</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -81,19 +89,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pages\Modal\AspectEditModalView.xaml">
+    <Page Include="Views\Pages\Modal\ModalDialogWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pages\Modal\AspectFactoryModalView.xaml">
+    <Page Include="Views\Pages\SkillProfiles\Modal\AspectEditModalView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pages\Modal\SkillEditModalView.xaml">
+    <Page Include="Views\Pages\SkillProfiles\Modal\AspectFactoryModalView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pages\Modal\SkillFactoryPage.xaml">
+    <Page Include="Views\Pages\SkillProfiles\Modal\AspectTransferModalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\SkillProfiles\Modal\SaveProfileMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\SkillProfiles\Modal\SkillEditModalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\SkillProfiles\Modal\SkillFactoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -101,7 +121,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pages\SkillProfiles\SkillProfilesPage.xaml">
+    <Page Include="Views\Pages\SkillProfiles\SkillsProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\LoadWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -122,34 +146,53 @@
     <Compile Include="Base\Store\NavigationStore.cs" />
     <Compile Include="Base\VMBase.cs" />
     <Compile Include="Controls\ModalControl\Modal.cs" />
+    <Compile Include="Converters\EnumToStringConverter.cs" />
+    <Compile Include="Converters\StringToDoubleConverter.cs" />
+    <Compile Include="Extensions\TextBox.cs" />
+    <Compile Include="Runtime.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\Modal\AspectEditModalViewModel.cs" />
-    <Compile Include="ViewModels\Modal\AspectFactoryModalViewModel.cs" />
-    <Compile Include="ViewModels\Modal\SkillEditModalViewModel.cs" />
-    <Compile Include="ViewModels\Modal\SkillFactoryModalViewModel.cs" />
-    <Compile Include="ViewModels\SkillProfiles\SkillAspectsViewModel.cs" />
-    <Compile Include="ViewModels\SkillProfiles\SkillProfilesViewModel.cs" />
+    <Compile Include="ViewModels\Modal\ModalDialogWindowViewModel.cs" />
+    <Compile Include="ViewModels\SkillsProfile\Modal\AspectEditModalViewModel.cs" />
+    <Compile Include="ViewModels\SkillsProfile\Modal\AspectFactoryModalViewModel.cs" />
+    <Compile Include="ViewModels\SkillsProfile\Modal\AspectTransferModalViewModel.cs" />
+    <Compile Include="ViewModels\SkillsProfile\Modal\SaveSkillsProfileMenuViewModel.cs" />
+    <Compile Include="ViewModels\SkillsProfile\Modal\SkillEditModalViewModel.cs" />
+    <Compile Include="ViewModels\SkillsProfile\Modal\SkillFactoryModalViewModel.cs" />
+    <Compile Include="ViewModels\SkillsProfile\SkillAspectsViewModel.cs" />
+    <Compile Include="ViewModels\SkillsProfile\SkillsProfileViewModel.cs" />
     <Compile Include="Views\Pages\MainMenuViewModel.xaml.cs">
       <DependentUpon>MainMenuViewModel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\Modal\AspectEditModalView.xaml.cs">
+    <Compile Include="Views\Pages\Modal\ModalDialogWindowView.xaml.cs">
+      <DependentUpon>ModalDialogWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\SkillProfiles\Modal\AspectEditModalView.xaml.cs">
       <DependentUpon>AspectEditModalView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\Modal\AspectFactoryModalView.xaml.cs">
+    <Compile Include="Views\Pages\SkillProfiles\Modal\AspectFactoryModalView.xaml.cs">
       <DependentUpon>AspectFactoryModalView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\Modal\SkillEditModalView.xaml.cs">
+    <Compile Include="Views\Pages\SkillProfiles\Modal\AspectTransferModalView.xaml.cs">
+      <DependentUpon>AspectTransferModalView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\SkillProfiles\Modal\SaveProfileMenuView.xaml.cs">
+      <DependentUpon>SaveProfileMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\SkillProfiles\Modal\SkillEditModalView.xaml.cs">
       <DependentUpon>SkillEditModalView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\Modal\SkillFactoryPage.xaml.cs">
+    <Compile Include="Views\Pages\SkillProfiles\Modal\SkillFactoryPage.xaml.cs">
       <DependentUpon>SkillFactoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\SkillProfiles\SkillAspectsView.xaml.cs">
       <DependentUpon>SkillAspectsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\SkillProfiles\SkillProfilesPage.xaml.cs">
-      <DependentUpon>SkillProfilesPage.xaml</DependentUpon>
+    <Compile Include="Views\Pages\SkillProfiles\SkillsProfilePage.xaml.cs">
+      <DependentUpon>SkillsProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\LoadWindow.xaml.cs">
+      <DependentUpon>LoadWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -193,5 +236,50 @@
       <Name>SkillApp.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Release\EPPlus.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Release\EPPlus.Interfaces.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Release\EPPlus.System.Drawing.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Release\Microsoft.IO.RecyclableMemoryStream.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Release\SkillApp.Core.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EPPlus.System.Drawing.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Microsoft.IO.RecyclableMemoryStream.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SkillApp.Core.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Xceed.Document.NET.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Xceed.Words.NET.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EPPlus.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EPPlus.Interfaces.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>copy "$(SolutionDir)DLL\SkillApp.Core.dll" "$(ProjectDir)\Resources\SkillApp.Core.dll"</PreBuildEvent>
+  </PropertyGroup>
 </Project>

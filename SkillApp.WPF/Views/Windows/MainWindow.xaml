@@ -10,6 +10,7 @@
     Width="800"
     Height="450"
     d:DataContext="{StaticResource MainVM}"
+    Icon="pack://Application:,,,/logo.ico"
     WindowState="Maximized"
     mc:Ignorable="d">
     <Grid>

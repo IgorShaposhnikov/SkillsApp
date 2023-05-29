@@ -1,15 +1,12 @@
 ﻿using SkillApp.Core.Enums;
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace SkillApp.Core
 {
-    public class Main
+    public static class Main
     {
-        public Dictionary<Core.Enums.AspectType, Core.Models.AspectType> AspectType = new Dictionary<AspectType, Models.AspectType>();
 
-        public Main()
-        {
-
-        }
     }
 }

@@ -1,0 +1,67 @@
+﻿<UserControl
+    x:Class="SkillApp.WPF.Views.Pages.SkillsProfile.Modal.SkillFactoryPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:extensions="clr-namespace:SkillApp.Extensions"
+    xmlns:local="clr-namespace:SkillApp.WPF.Views.Pages.SkillsProfile.Modal"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vmLocal="clr-namespace:SkillApp.WPF.ViewModels.SkillsProfile.Modal"
+    d:DataContext="{d:DesignInstance Type=vmLocal:SkillFactoryModalViewModel}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Grid Background="Transparent">
+        <!--  Header  -->
+        <StackPanel>
+            <Border
+                Padding="10"
+                BorderBrush="Black"
+                BorderThickness="0,0,0,1">
+                <Grid>
+                    <TextBlock FontSize="20" Text="Создание навыка" />
+                    <Button
+                        Width="20"
+                        Height="20"
+                        HorizontalAlignment="Right"
+                        Command="{Binding CloseCommand}"
+                        Content="X"
+                        IsCancel="True" />
+                </Grid>
+            </Border>
+
+            <!--  Body  -->
+
+            <Border Padding="10">
+                <StackPanel>
+                    <TextBlock
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Text="Названние/Формулировка навыка" />
+                    <TextBox
+                        Height="100"
+                        Margin="0,4,0,0"
+                        AcceptsReturn="True"
+                        FontSize="14"
+                        Text="{Binding Name}"
+                        TextWrapping="WrapWithOverflow" />
+
+                    <!--<TextBlock Margin="0,16,0,0" Text="Score" />
+                    <TextBox
+                        Margin="0,4,0,0"
+                        extensions:TextBox.OnlyNumeric="Double"
+                        FontSize="14"
+                        Text="{Binding Score}" />-->
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!--  Footer  -->
+        <Border Padding="10" VerticalAlignment="Bottom">
+            <Button
+                Height="32"
+                Command="{Binding ActionCommand}"
+                Content="Add Skill" />
+        </Border>
+    </Grid>
+</UserControl>

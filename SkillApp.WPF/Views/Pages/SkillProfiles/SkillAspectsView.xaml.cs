@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace SkillApp.WPF.Views.Pages.SkillProfiles
+namespace SkillApp.WPF.Views.Pages.SkillsProfile
 {
     /// <summary>
     /// Логика взаимодействия для SkillAspectsView.xaml
@@ -12,6 +12,7 @@ namespace SkillApp.WPF.Views.Pages.SkillProfiles
         public SkillAspectsView()
         {
             InitializeComponent();
+            
         }
 
         private void Expander_Expanded(object sender, RoutedEventArgs e)
@@ -34,6 +35,21 @@ namespace SkillApp.WPF.Views.Pages.SkillProfiles
                     row.DetailsVisibility = row.DetailsVisibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
                     break;
                 }
+        }
+
+        private void DataGridRow_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            //TODO: in the future
+            //MessageBox.Show(sender.GetType().ToString());
+            //var row = (DataGridRow)sender;
+            //for (var i = 0; i < VisualTreeHelper.GetChildrenCount(sender as Visual); i++)
+            //    Console.WriteLine(i);
+            //    //if (vis is Expander)
+            //    //{
+            //    //    var row = (Expander)vis;
+            //    //    row.IsExpanded = !row.IsExpanded;
+            //    //    break;
+            //    //}
         }
     }
 }

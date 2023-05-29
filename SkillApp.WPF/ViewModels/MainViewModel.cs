@@ -1,9 +1,5 @@
-﻿using SkillApp.Core.Abstraction;
-using SkillApp.Core.Collections;
-using SkillApp.Core.Models;
-using SkillApp.WPF.Base;
+﻿using SkillApp.WPF.Base;
 using SkillApp.WPF.Base.Store;
-using SkillApp.WPF.ViewModels.SkillProfiles;
 
 namespace SkillApp.WPF.ViewModels
 {
@@ -35,5 +31,17 @@ namespace SkillApp.WPF.ViewModels
 
 
         #endregion NavigationStore Actions
+
+
+        #region Public Methods
+
+
+        public void LoadProject(string path) 
+        {
+            _mainMenuViewModel.LoadSkillsProfile(path);  
+        }
+
+
+        #endregion Public Methods
     }
 }
