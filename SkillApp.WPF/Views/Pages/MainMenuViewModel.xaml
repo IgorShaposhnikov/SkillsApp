@@ -1,0 +1,105 @@
+﻿<UserControl
+    x:Class="SkillApp.WPF.Views.Pages.MainMenuViewModel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SkillApp.WPF.Views.Pages"
+    xmlns:localVM="clr-namespace:SkillApp.WPF.ViewModels"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DataContext="{d:DesignInstance Type=localVM:MainMenuViewModel}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style TargetType="RadioButton">
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="TextBlock.FontSize" Value="16" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Border
+                            x:Name="Border"
+                            Padding="16,8"
+                            Background="Transparent"
+                            CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!--<Setter TargetName="Border" Property="Background" Value="#f0f3fb" />-->
+                                <Setter Property="TextElement.Foreground" Value="#6f74c8" />
+                            </Trigger>
+
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#f0f3fb" />
+                                <Setter Property="TextElement.Foreground" Value="#6f74c8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate DataType="{x:Type localVM:TabVMBased}">
+            <RadioButton
+                GroupName="Group"
+                IsChecked="{Binding IsChecked}"
+                IsEnabled="{Binding IsEnable, Mode=OneWayToSource}"
+                IsTabStop="False">
+                <StackPanel Orientation="Horizontal">
+                    <Border
+                        Width="24"
+                        Height="24"
+                        Margin="0,0,8,0"
+                        Background="Pink"
+                        CornerRadius="5" />
+
+                    <TextBlock Text="{Binding Name}" />
+                </StackPanel>
+            </RadioButton>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border
+            Grid.Column="0"
+            Width="250"
+            Padding="12,16"
+            BorderBrush="#f4f4f4"
+            BorderThickness="0,0,2,0">
+            <StackPanel HorizontalAlignment="Left" Background="Transparent">
+                <StackPanel Orientation="Horizontal">
+                    <Border
+                        Width="32"
+                        Height="32"
+                        Background="#167ffc"
+                        CornerRadius="5" />
+                    <TextBlock
+                        Margin="8,0,0,0"
+                        FontSize="20"
+                        Text="SkillApp" />
+                </StackPanel>
+
+                <TextBlock
+                    Margin="0,16,0,0"
+                    FontWeight="Medium"
+                    Text="General" />
+
+                <ItemsControl
+                    Width="224"
+                    Margin="0,4,0,0"
+                    ItemsSource="{Binding Tabs}" />
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Column="1">
+            <ContentControl Content="{Binding NavigationStore.CurrentViewModel}" />
+        </Grid>
+    </Grid>
+</UserControl>

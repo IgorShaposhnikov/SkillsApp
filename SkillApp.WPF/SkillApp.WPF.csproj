@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{711FCA6A-4824-4D55-B66B-B8478762FD88}</ProjectGuid>
+    <ProjectGuid>{12BE335F-9178-4334-A14A-60E2C0355BE6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>SkillApp.WPF</RootNamespace>
     <AssemblyName>SkillApp.WPF</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,6 +37,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -56,23 +57,55 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AppCore\Views\Modal\SkillFactoryView.xaml">
+    <Page Include="Controls\ControlsRegister.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AppCore\Views\Pages\DataTable\AspectDataTableView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Controls\ModalControl\Modal.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="AppCore\Views\Pages\DataTable\SkillDataTableView.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
-    <Page Include="AppCore\Views\Pages\DataTable\TableControlView.xaml">
+    <Page Include="DataTemplates.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
-    <Page Include="AppCore\Views\Windows\MainWindow.xaml">
+    <Page Include="Resources\Styles\Colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\DataGridStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\MainMenuViewModel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\Modal\AspectEditModalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\Modal\AspectFactoryModalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\Modal\SkillEditModalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\Modal\SkillFactoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\SkillProfiles\SkillAspectsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\SkillProfiles\SkillProfilesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -80,75 +113,50 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AppCore\Commands\RelayCommand.cs" />
-    <Compile Include="AppCore\Converters\EnumDescriptionConverter.cs" />
-    <Compile Include="AppCore\Converters\NegativeBooleanToVisibilityConverter.cs" />
-    <Compile Include="AppCore\Models\MainModel.cs" />
-    <Compile Include="AppCore\Models\SkillFactoryModel.cs" />
-    <Compile Include="AppCore\Models\Table\Aspect.cs" />
-    <Compile Include="AppCore\Models\Table\AspectType.cs" />
-    <Compile Include="AppCore\Models\Table\ExecuteFrequency.cs" />
-    <Compile Include="AppCore\Models\Table\Skill.cs" />
-    <Compile Include="AppCore\ViewModels\DataTable\AspectDataTableViewModel.cs" />
-    <Compile Include="AppCore\ViewModels\DataTable\SkillDataTableViewModel.cs" />
-    <Compile Include="AppCore\ViewModels\DataTable\TableControlViewModel.cs" />
-    <Compile Include="AppCore\ViewModels\DataTable\TableControlViewModelBase.cs" />
-    <Compile Include="AppCore\ViewModels\MainViewModel.cs" />
-    <Compile Include="AppCore\ViewModels\Modal\ModalController.cs" />
-    <Compile Include="AppCore\ViewModels\Modal\SkillFactoryViewModel.cs" />
-    <Compile Include="AppCore\Views\Modal\SkillFactoryView.xaml.cs">
-      <DependentUpon>SkillFactoryView.xaml</DependentUpon>
+    <Compile Include="Base\Modal\IModalViewModel.cs" />
+    <Compile Include="Base\Modal\ModalViewModelBase.cs" />
+    <Compile Include="Base\RelayCommand.cs" />
+    <Compile Include="Base\Store\IModalNavigationStore.cs" />
+    <Compile Include="Base\Store\INavigationStore.cs" />
+    <Compile Include="Base\Store\ModalNavigationStore.cs" />
+    <Compile Include="Base\Store\NavigationStore.cs" />
+    <Compile Include="Base\VMBase.cs" />
+    <Compile Include="Controls\ModalControl\Modal.cs" />
+    <Compile Include="ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\Modal\AspectEditModalViewModel.cs" />
+    <Compile Include="ViewModels\Modal\AspectFactoryModalViewModel.cs" />
+    <Compile Include="ViewModels\Modal\SkillEditModalViewModel.cs" />
+    <Compile Include="ViewModels\Modal\SkillFactoryModalViewModel.cs" />
+    <Compile Include="ViewModels\SkillProfiles\SkillAspectsViewModel.cs" />
+    <Compile Include="ViewModels\SkillProfiles\SkillProfilesViewModel.cs" />
+    <Compile Include="Views\Pages\MainMenuViewModel.xaml.cs">
+      <DependentUpon>MainMenuViewModel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppCore\Views\Pages\DataTable\AspectDataTableView.xaml.cs">
-      <DependentUpon>AspectDataTableView.xaml</DependentUpon>
+    <Compile Include="Views\Pages\Modal\AspectEditModalView.xaml.cs">
+      <DependentUpon>AspectEditModalView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppCore\Views\Pages\DataTable\SkillDataTableView.xaml.cs">
-      <DependentUpon>SkillDataTableView.xaml</DependentUpon>
+    <Compile Include="Views\Pages\Modal\AspectFactoryModalView.xaml.cs">
+      <DependentUpon>AspectFactoryModalView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppCore\Views\Pages\DataTable\TableControlView.xaml.cs">
-      <DependentUpon>TableControlView.xaml</DependentUpon>
+    <Compile Include="Views\Pages\Modal\SkillEditModalView.xaml.cs">
+      <DependentUpon>SkillEditModalView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppCore\Views\Windows\MainWindow.xaml.cs">
+    <Compile Include="Views\Pages\Modal\SkillFactoryPage.xaml.cs">
+      <DependentUpon>SkillFactoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\SkillProfiles\SkillAspectsView.xaml.cs">
+      <DependentUpon>SkillAspectsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\SkillProfiles\SkillProfilesPage.xaml.cs">
+      <DependentUpon>SkillProfilesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AppModel\Service\IMultipageNavigationService.cs" />
-    <Compile Include="AppModel\Service\INavigationService.cs" />
-    <Compile Include="AppModel\Service\MultipageNavigationService.cs" />
-    <Compile Include="AppModel\Service\NavigationService.cs" />
-    <Compile Include="AppModel\Stores\INavigationStore.cs" />
-    <Compile Include="AppModel\Stores\ModalNagivationStore.cs" />
-    <Compile Include="AppModel\Stores\NavigationStore.cs" />
-    <Compile Include="AppModel\ViewModelBase.cs" />
-    <Compile Include="AppModel\VMBase.cs" />
-    <Compile Include="Controls\ModalControl\IModalController.cs" />
-    <Compile Include="Controls\ModalControl\ModalControl.cs" />
-    <Page Include="Controls\Controls.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ModalControl\ModalControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\ButtonStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Colors.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\DataGridStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\TextBoxStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\ModalControl\IModalContentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -166,7 +174,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -176,11 +183,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Images\logo.ico" />
+    <Folder Include="Models\" />
+    <Folder Include="Resources\Assets\Fonts\" />
+    <Folder Include="Resources\Assets\Images\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="logo.ico" />
+    <ProjectReference Include="..\SkillApp.Core\SkillApp.Core.csproj">
+      <Project>{8fcf5efd-cb1f-434a-8865-21f8bbcda8ca}</Project>
+      <Name>SkillApp.Core</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SkillApp.WPF.Properties
+namespace SkillApp.Properties
 {
 
 

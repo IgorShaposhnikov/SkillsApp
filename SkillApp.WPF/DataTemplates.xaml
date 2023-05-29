@@ -1,0 +1,69 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SkillApp.WPF.Controls"
+    xmlns:enums="clr-namespace:SkillApp.Core.Enums;assembly=SkillApp.Core"
+    xmlns:modalPages="clr-namespace:SkillApp.WPF.Views.Pages.Modal"
+    xmlns:modalViewModels="clr-namespace:SkillApp.WPF.ViewModels.Modal"
+    xmlns:pages="clr-namespace:SkillApp.WPF.Views.Pages"
+    xmlns:skillProfilesPages="clr-namespace:SkillApp.WPF.Views.Pages.SkillProfiles"
+    xmlns:skillProfilesViewModels="clr-namespace:SkillApp.WPF.ViewModels.SkillProfiles"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:viewmodels="clr-namespace:SkillApp.WPF.ViewModels">
+
+    <ResourceDictionary.MergedDictionaries>
+        <!--  Controls  -->
+        <ResourceDictionary Source="Controls/ControlsRegister.xaml" />
+        <!--  Styles  -->
+        <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+        <ResourceDictionary Source="Resources/Styles/DataGridStyle.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <viewmodels:MainViewModel x:Key="MainVM" />
+
+
+    <ObjectDataProvider
+        x:Key="aspectTypeFromEnum"
+        MethodName="GetValues"
+        ObjectType="{x:Type sys:Enum}">
+        <ObjectDataProvider.MethodParameters>
+            <x:Type TypeName="enums:AspectType" />
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+
+    <ObjectDataProvider
+        x:Key="executionFrequencyFromEnum"
+        MethodName="GetValues"
+        ObjectType="{x:Type sys:Enum}">
+        <ObjectDataProvider.MethodParameters>
+            <x:Type TypeName="enums:ExecutionFrequency" />
+        </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+
+    <!--  SkillProfiles  -->
+    <DataTemplate DataType="{x:Type skillProfilesViewModels:SkillProfilesViewModel}">
+        <skillProfilesPages:SkillProfilesPage />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type skillProfilesViewModels:SkillAspectsViewModel}">
+        <skillProfilesPages:SkillAspectsView />
+    </DataTemplate>
+
+    <!--  Modal  -->
+    <DataTemplate DataType="{x:Type modalViewModels:SkillFactoryModalViewModel}">
+        <modalPages:SkillFactoryPage />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type modalViewModels:SkillEditModalViewModel}">
+        <modalPages:SkillEditModalView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type modalViewModels:AspectFactoryModalViewModel}">
+        <modalPages:AspectFactoryModalView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type modalViewModels:AspectEditModalViewModel}">
+        <modalPages:AspectEditModalView />
+    </DataTemplate>
+
+    <!--  MainMenu  -->
+    <DataTemplate DataType="{x:Type viewmodels:MainMenuViewModel}">
+        <pages:MainMenuViewModel />
+    </DataTemplate>
+</ResourceDictionary>

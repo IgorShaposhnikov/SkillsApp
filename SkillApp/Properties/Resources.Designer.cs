@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SkillApp.WPF.Properties
+namespace SkillApp.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace SkillApp.WPF.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SkillApp.WPF.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SkillApp.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

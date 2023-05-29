@@ -1,0 +1,24 @@
+﻿<Window
+    x:Class="SkillApp.WPF.Views.Windows.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:SkillApp.WPF.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SkillApp.WPF.Views.Windows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="SkillApp"
+    Width="800"
+    Height="450"
+    d:DataContext="{StaticResource MainVM}"
+    WindowState="Maximized"
+    mc:Ignorable="d">
+    <Grid>
+        <ContentControl Content="{Binding CurrentViewModel, Source={StaticResource MainVM}}" />
+
+        <controls:Modal
+            Content="{Binding ModalNavigationStore.CurrentViewModel, Source={StaticResource MainVM}}"
+            IsOpen="{Binding ModalNavigationStore.IsOpen, Source={StaticResource MainVM}}"
+            WindowHeight="{Binding ModalNavigationStore.CurrentViewModel.Height, Source={StaticResource MainVM}}"
+            WindowWidth="{Binding ModalNavigationStore.CurrentViewModel.Width, Source={StaticResource MainVM}}" />
+    </Grid>
+</Window>

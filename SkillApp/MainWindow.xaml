@@ -1,0 +1,449 @@
+﻿<Window
+    x:Class="SkillApp.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SkillApp"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel>
+            <Border Padding="16">
+                <Expander Header="1. Name">
+                    <ScrollViewer VerticalAlignment="Stretch">
+                        <Border
+                            Padding="16"
+                            Background="WhiteSmoke"
+                            CornerRadius="5">
+                            <StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Id" />
+                                    <TextBox FontSize="12" Text="1" />
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Name" />
+                                    <TextBox FontSize="12" Text="Name" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Frequents" />
+                                    <ComboBox FontSize="12" SelectedIndex="0">
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <TextBox FontSize="14" Text="10" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <ComboBox FontSize="14" SelectedIndex="0">
+                                        <ComboBoxItem>Z</ComboBoxItem>
+                                        <ComboBoxItem>A</ComboBoxItem>
+                                        <ComboBoxItem>B</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Explanation" />
+                                    <TextBox
+                                        HorizontalAlignment="Left"
+                                        FontSize="14"
+                                        Text="TEXT ME here, click the link and save my number to your phone!: https://my.community.com/josezuniga  Check out HE grooming to be one of the FIRST to join this revolutionary brand for men: https://hegrooming.co/ Want T-shirts that fit PERFECTLY? Check out ESNTLS, they sell the best T's in the world: https://www.esntls.co/ Pick one up and let me know what you think!  Subscribe to our 2nd channel: http://bit.ly/2aOthqV Thank you to for sponsoring this video! FOLLOW US ON SOCIAL MEDIA:"
+                                        TextWrapping="WrapWithOverflow" />
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Border>
+                    </ScrollViewer>
+                </Expander>
+            </Border>
+            <Border Padding="16">
+                <Expander Header="1. Name">
+                    <ScrollViewer VerticalAlignment="Stretch">
+                        <Border
+                            Padding="16"
+                            Background="WhiteSmoke"
+                            CornerRadius="5">
+                            <StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Id" />
+                                    <TextBox FontSize="12" Text="1" />
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Name" />
+                                    <TextBox FontSize="12" Text="Name" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Frequents" />
+                                    <ComboBox FontSize="12" SelectedIndex="0">
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <TextBox FontSize="14" Text="10" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <ComboBox FontSize="14" SelectedIndex="0">
+                                        <ComboBoxItem>Z</ComboBoxItem>
+                                        <ComboBoxItem>A</ComboBoxItem>
+                                        <ComboBoxItem>B</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Explanation" />
+                                    <TextBox
+                                        HorizontalAlignment="Left"
+                                        FontSize="14"
+                                        Text="TEXT ME here, click the link and save my number to your phone!: https://my.community.com/josezuniga  Check out HE grooming to be one of the FIRST to join this revolutionary brand for men: https://hegrooming.co/ Want T-shirts that fit PERFECTLY? Check out ESNTLS, they sell the best T's in the world: https://www.esntls.co/ Pick one up and let me know what you think!  Subscribe to our 2nd channel: http://bit.ly/2aOthqV Thank you to for sponsoring this video! FOLLOW US ON SOCIAL MEDIA:"
+                                        TextWrapping="WrapWithOverflow" />
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Border>
+                    </ScrollViewer>
+                </Expander>
+            </Border>
+            <Border Padding="16">
+                <Expander Header="1. Name">
+                    <ScrollViewer VerticalAlignment="Stretch">
+                        <Border
+                            Padding="16"
+                            Background="WhiteSmoke"
+                            CornerRadius="5">
+                            <StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Id" />
+                                    <TextBox FontSize="12" Text="1" />
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Name" />
+                                    <TextBox FontSize="12" Text="Name" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Frequents" />
+                                    <ComboBox FontSize="12" SelectedIndex="0">
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <TextBox FontSize="14" Text="10" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <ComboBox FontSize="14" SelectedIndex="0">
+                                        <ComboBoxItem>Z</ComboBoxItem>
+                                        <ComboBoxItem>A</ComboBoxItem>
+                                        <ComboBoxItem>B</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Explanation" />
+                                    <TextBox
+                                        HorizontalAlignment="Left"
+                                        FontSize="14"
+                                        Text="TEXT ME here, click the link and save my number to your phone!: https://my.community.com/josezuniga  Check out HE grooming to be one of the FIRST to join this revolutionary brand for men: https://hegrooming.co/ Want T-shirts that fit PERFECTLY? Check out ESNTLS, they sell the best T's in the world: https://www.esntls.co/ Pick one up and let me know what you think!  Subscribe to our 2nd channel: http://bit.ly/2aOthqV Thank you to for sponsoring this video! FOLLOW US ON SOCIAL MEDIA:"
+                                        TextWrapping="WrapWithOverflow" />
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Border>
+                    </ScrollViewer>
+                </Expander>
+            </Border>
+            <Border Padding="16">
+                <Expander Header="1. Name">
+                    <ScrollViewer VerticalAlignment="Stretch">
+                        <Border
+                            Padding="16"
+                            Background="WhiteSmoke"
+                            CornerRadius="5">
+                            <StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Id" />
+                                    <TextBox FontSize="12" Text="1" />
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Name" />
+                                    <TextBox FontSize="12" Text="Name" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Frequents" />
+                                    <ComboBox FontSize="12" SelectedIndex="0">
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <TextBox FontSize="14" Text="10" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <ComboBox FontSize="14" SelectedIndex="0">
+                                        <ComboBoxItem>Z</ComboBoxItem>
+                                        <ComboBoxItem>A</ComboBoxItem>
+                                        <ComboBoxItem>B</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Explanation" />
+                                    <TextBox
+                                        HorizontalAlignment="Left"
+                                        FontSize="14"
+                                        Text="TEXT ME here, click the link and save my number to your phone!: https://my.community.com/josezuniga  Check out HE grooming to be one of the FIRST to join this revolutionary brand for men: https://hegrooming.co/ Want T-shirts that fit PERFECTLY? Check out ESNTLS, they sell the best T's in the world: https://www.esntls.co/ Pick one up and let me know what you think!  Subscribe to our 2nd channel: http://bit.ly/2aOthqV Thank you to for sponsoring this video! FOLLOW US ON SOCIAL MEDIA:"
+                                        TextWrapping="WrapWithOverflow" />
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Border>
+                    </ScrollViewer>
+                </Expander>
+            </Border>
+            <Border Padding="16">
+                <Expander Header="1. Name">
+                    <ScrollViewer VerticalAlignment="Stretch">
+                        <Border
+                            Padding="16"
+                            Background="WhiteSmoke"
+                            CornerRadius="5">
+                            <StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Id" />
+                                    <TextBox FontSize="12" Text="1" />
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Name" />
+                                    <TextBox FontSize="12" Text="Name" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Frequents" />
+                                    <ComboBox FontSize="12" SelectedIndex="0">
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <TextBox FontSize="14" Text="10" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <ComboBox FontSize="14" SelectedIndex="0">
+                                        <ComboBoxItem>Z</ComboBoxItem>
+                                        <ComboBoxItem>A</ComboBoxItem>
+                                        <ComboBoxItem>B</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Explanation" />
+                                    <TextBox
+                                        HorizontalAlignment="Left"
+                                        FontSize="14"
+                                        Text="TEXT ME here, click the link and save my number to your phone!: https://my.community.com/josezuniga  Check out HE grooming to be one of the FIRST to join this revolutionary brand for men: https://hegrooming.co/ Want T-shirts that fit PERFECTLY? Check out ESNTLS, they sell the best T's in the world: https://www.esntls.co/ Pick one up and let me know what you think!  Subscribe to our 2nd channel: http://bit.ly/2aOthqV Thank you to for sponsoring this video! FOLLOW US ON SOCIAL MEDIA:"
+                                        TextWrapping="WrapWithOverflow" />
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Border>
+                    </ScrollViewer>
+                </Expander>
+            </Border>
+            <Border Padding="16">
+                <Expander Header="1. Name">
+                    <ScrollViewer VerticalAlignment="Stretch">
+                        <Border
+                            Padding="16"
+                            Background="WhiteSmoke"
+                            CornerRadius="5">
+                            <StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Id" />
+                                    <TextBox FontSize="12" Text="1" />
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Name" />
+                                    <TextBox FontSize="12" Text="Name" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Frequents" />
+                                    <ComboBox FontSize="12" SelectedIndex="0">
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <TextBox FontSize="14" Text="10" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <ComboBox FontSize="14" SelectedIndex="0">
+                                        <ComboBoxItem>Z</ComboBoxItem>
+                                        <ComboBoxItem>A</ComboBoxItem>
+                                        <ComboBoxItem>B</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Explanation" />
+                                    <TextBox
+                                        HorizontalAlignment="Left"
+                                        FontSize="14"
+                                        Text="TEXT ME here, click the link and save my number to your phone!: https://my.community.com/josezuniga  Check out HE grooming to be one of the FIRST to join this revolutionary brand for men: https://hegrooming.co/ Want T-shirts that fit PERFECTLY? Check out ESNTLS, they sell the best T's in the world: https://www.esntls.co/ Pick one up and let me know what you think!  Subscribe to our 2nd channel: http://bit.ly/2aOthqV Thank you to for sponsoring this video! FOLLOW US ON SOCIAL MEDIA:"
+                                        TextWrapping="WrapWithOverflow" />
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Border>
+                    </ScrollViewer>
+                </Expander>
+            </Border>
+            <Border Padding="16">
+                <Expander Header="1. Name">
+                    <ScrollViewer VerticalAlignment="Stretch">
+                        <Border
+                            Padding="16"
+                            Background="WhiteSmoke"
+                            CornerRadius="5">
+                            <StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Id" />
+                                    <TextBox FontSize="12" Text="1" />
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Name" />
+                                    <TextBox FontSize="12" Text="Name" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Frequents" />
+                                    <ComboBox FontSize="12" SelectedIndex="0">
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <TextBox FontSize="14" Text="10" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <ComboBox FontSize="14" SelectedIndex="0">
+                                        <ComboBoxItem>Z</ComboBoxItem>
+                                        <ComboBoxItem>A</ComboBoxItem>
+                                        <ComboBoxItem>B</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Explanation" />
+                                    <TextBox
+                                        HorizontalAlignment="Left"
+                                        FontSize="14"
+                                        Text="TEXT ME here, click the link and save my number to your phone!: https://my.community.com/josezuniga  Check out HE grooming to be one of the FIRST to join this revolutionary brand for men: https://hegrooming.co/ Want T-shirts that fit PERFECTLY? Check out ESNTLS, they sell the best T's in the world: https://www.esntls.co/ Pick one up and let me know what you think!  Subscribe to our 2nd channel: http://bit.ly/2aOthqV Thank you to for sponsoring this video! FOLLOW US ON SOCIAL MEDIA:"
+                                        TextWrapping="WrapWithOverflow" />
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Border>
+                    </ScrollViewer>
+                </Expander>
+            </Border>
+            <Border Padding="16">
+                <Expander Header="1. Name">
+                    <ScrollViewer VerticalAlignment="Stretch">
+                        <Border
+                            Padding="16"
+                            Background="WhiteSmoke"
+                            CornerRadius="5">
+                            <StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Id" />
+                                    <TextBox FontSize="12" Text="1" />
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Name" />
+                                    <TextBox FontSize="12" Text="Name" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Frequents" />
+                                    <ComboBox FontSize="12" SelectedIndex="0">
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                        <ComboBoxItem>Every Shift</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <TextBox FontSize="14" Text="10" />
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Score" />
+                                    <ComboBox FontSize="14" SelectedIndex="0">
+                                        <ComboBoxItem>Z</ComboBoxItem>
+                                        <ComboBoxItem>A</ComboBoxItem>
+                                        <ComboBoxItem>B</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock FontSize="14" Text="Explanation" />
+                                    <TextBox
+                                        HorizontalAlignment="Left"
+                                        FontSize="14"
+                                        Text="TEXT ME here, click the link and save my number to your phone!: https://my.community.com/josezuniga  Check out HE grooming to be one of the FIRST to join this revolutionary brand for men: https://hegrooming.co/ Want T-shirts that fit PERFECTLY? Check out ESNTLS, they sell the best T's in the world: https://www.esntls.co/ Pick one up and let me know what you think!  Subscribe to our 2nd channel: http://bit.ly/2aOthqV Thank you to for sponsoring this video! FOLLOW US ON SOCIAL MEDIA:"
+                                        TextWrapping="WrapWithOverflow" />
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Border>
+                    </ScrollViewer>
+                </Expander>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</Window>
