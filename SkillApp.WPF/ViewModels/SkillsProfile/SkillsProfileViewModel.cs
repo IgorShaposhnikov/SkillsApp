@@ -1,5 +1,6 @@
 ﻿using SkillApp.Core.Enums;
 using SkillApp.Core.Models;
+using SkillApp.Core.Parsers;
 using SkillApp.Core.Printouts;
 using SkillApp.WPF.Base;
 using SkillApp.WPF.Base.Commands;
@@ -108,7 +109,7 @@ namespace SkillApp.WPF.ViewModels.SkillsProfile
             ModalNavigationStore.Instance.Open(new AspectTransferModalViewModel(from, Profile.Skills.ToList<ISkill>()));
         }
 
-        public void Load(string path)
+        public void LoadXml(string path)
         {
             var skills = XMLPrintout.LoadSkillProfile(path:path);
             //skills.Sort
@@ -138,6 +139,12 @@ namespace SkillApp.WPF.ViewModels.SkillsProfile
 
                 Profile.AddSkill(loadedSkill);
             }
+        }
+
+
+        public void LoadExcel(string path) 
+        {
+            var skills = ExcelParser.Load(path);
         }
 
 

@@ -20,45 +20,62 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
         <Border Padding="10,10,16,10">
-            <Grid>
-                <StackPanel>
+            <Grid ShowGridLines="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="0.7*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    FontWeight="Medium"
+                    Text="Аспекты" />
+
+                <WrapPanel Grid.Row="1" Orientation="Horizontal">
                     <TextBlock
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        FontSize="18"
-                        FontWeight="Medium"
-                        Text="Аспекты" />
+                        Margin="0,0,16,0"
+                        FontSize="14"
+                        TextWrapping="WrapWithOverflow">
+                        <Run FontWeight="Medium">Навык:</Run>
+                        <Run Text="{Binding OwnerName, Mode=OneWay}" />
+                    </TextBlock>
 
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock
-                            Width="600"
-                            FontSize="14"
-                            TextWrapping="Wrap">
-                            <Run FontWeight="Medium">Навык:</Run>
-                            <Run Text="{Binding OwnerName, Mode=OneWay}" />
-                        </TextBlock>
-                        <StackPanel>
-                            <TextBlock Margin="16,0,0,0" FontSize="14">
-                                <Run FontWeight="Medium">Кол-во навыков:</Run>
-                                <Run Text="{Binding AspectsCount, Mode=OneWay}" />
-                            </TextBlock>
-                            <TextBlock Margin="16,0,0,0" FontSize="14">
-                                <Run FontWeight="Medium">Общее количество баллов:</Run>
-                                <Run Text="{Binding Score, Mode=OneWay}" />
-                            </TextBlock>
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
+                    <TextBlock
+                        Margin="0,0,16,0"
+                        FontSize="14"
+                        TextWrapping="WrapWithOverflow">
+                        <Run FontWeight="Medium">Кол-во навыков:</Run>
+                        <Run Text="{Binding AspectsCount, Mode=OneWay}" />
+                    </TextBlock>
+                    <TextBlock
+                        Margin="0,0,16,0"
+                        FontSize="14"
+                        TextWrapping="WrapWithOverflow">
+                        <Run FontWeight="Medium">Общее количество баллов:</Run>
+                        <Run Text="{Binding Score, Mode=OneWay}" />
+                    </TextBlock>
+                </WrapPanel>
 
-                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+
+                <WrapPanel
+                    Grid.RowSpan="2"
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
                     <Button
                         Height="32"
-                        Margin="10,0,0,0"
+                        Margin="0,0,8,8"
                         Command="{Binding AddAspectCommand}"
                         CommandParameter="{Binding}">
                         <StackPanel Orientation="Horizontal">
@@ -82,7 +99,7 @@
 
                     <Button
                         Height="32"
-                        Margin="10,0,0,0"
+                        Margin="0,0,8,8"
                         Command="{Binding SelectAspectsByTransferCommand}"
                         CommandParameter="{Binding}">
                         <Button.Style>
@@ -107,19 +124,19 @@
                             </Viewbox>
 
                             <TextBlock
-                                Margin="8,0,0,0"
+                                Margin="0,0,0,8"
                                 VerticalAlignment="Center"
                                 Text="Перенести аспект" />
                         </StackPanel>
                     </Button>
 
                     <Button
-                        Margin="8,0,0,0"
+                        Margin="0,0,8,8"
                         VerticalAlignment="Center"
                         Command="{Binding BackToOwnerCommand}"
                         Content="Назад к навыкам"
                         IsCancel="True" />
-                </StackPanel>
+                </WrapPanel>
             </Grid>
         </Border>
 

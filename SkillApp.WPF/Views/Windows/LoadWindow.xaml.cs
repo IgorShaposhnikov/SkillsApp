@@ -59,7 +59,15 @@ namespace SkillApp.WPF.Views.Windows
                         return;
                     }
 
-                    _mainViewModel.LoadProject(projectPath);
+                    if (projectPath.Contains(".xml")) 
+                    { 
+                        _mainViewModel.LoadXmlProject(projectPath);
+                    }
+
+                    if (projectPath.Contains(".xlsx"))
+                    {
+                        _mainViewModel.LoadExcelProject(projectPath);
+                    }
                     ChangeCurrentToMainWindow();
                 }
             }

@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:extensions="clr-namespace:SkillApp.Extensions"
+    xmlns:extensions="clr-namespace:SkillApp.WPF.Extensions"
     xmlns:local="clr-namespace:SkillApp.WPF.Views.Pages.SkillsProfile.Modal"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vmLocal="clr-namespace:SkillApp.WPF.ViewModels.SkillsProfile.Modal"
@@ -11,57 +11,67 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid Background="Transparent">
+    <Grid Background="Transparent" ShowGridLines="False">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
         <!--  Header  -->
-        <StackPanel>
-            <Border
-                Padding="10"
-                BorderBrush="Black"
-                BorderThickness="0,0,0,1">
-                <Grid>
-                    <TextBlock FontSize="20" Text="Создание навыка" />
-                    <Button
-                        Width="20"
-                        Height="20"
-                        HorizontalAlignment="Right"
-                        Command="{Binding CloseCommand}"
-                        Content="X"
-                        IsCancel="True" />
-                </Grid>
-            </Border>
 
-            <!--  Body  -->
+        <Border
+            Padding="10"
+            BorderBrush="Black"
+            BorderThickness="0,0,0,0.5"
+            SnapsToDevicePixels="True">
+            <Grid>
+                <TextBlock FontSize="20" Text="Создание навыка" />
+                <Button
+                    Width="32"
+                    Height="32"
+                    Padding="2"
+                    HorizontalAlignment="Right"
+                    Command="{Binding CloseCommand}"
+                    IsCancel="True"
+                    Style="{StaticResource DefaultGhostButtonTemplate}">
+                    <Viewbox MaxHeight="16">
+                        <Path
+                            extensions:Path.StringData="{StaticResource Close}"
+                            Fill="Black"
+                            Stretch="Fill" />
+                    </Viewbox>
+                </Button>
+            </Grid>
+        </Border>
 
-            <Border Padding="10">
-                <StackPanel>
-                    <TextBlock
-                        FontSize="14"
-                        FontWeight="Medium"
-                        Text="Названние/Формулировка навыка" />
-                    <TextBox
-                        Height="100"
-                        Margin="0,4,0,0"
-                        AcceptsReturn="True"
-                        FontSize="14"
-                        Text="{Binding Name}"
-                        TextWrapping="WrapWithOverflow" />
-
-                    <!--<TextBlock Margin="0,16,0,0" Text="Score" />
-                    <TextBox
-                        Margin="0,4,0,0"
-                        extensions:TextBox.OnlyNumeric="Double"
-                        FontSize="14"
-                        Text="{Binding Score}" />-->
-                </StackPanel>
-            </Border>
-        </StackPanel>
+        <!--  Body  -->
+        <Border Grid.Row="1" Padding="10">
+            <StackPanel>
+                <TextBlock
+                    FontSize="14"
+                    FontWeight="Medium"
+                    Text="Названние/Формулировка навыка" />
+                <TextBox
+                    Height="100"
+                    Margin="0,4,0,0"
+                    AcceptsReturn="True"
+                    FontSize="14"
+                    Text="{Binding Name}"
+                    TextWrapping="WrapWithOverflow" />
+            </StackPanel>
+        </Border>
 
         <!--  Footer  -->
-        <Border Padding="10" VerticalAlignment="Bottom">
+        <Border
+            Grid.Row="2"
+            Padding="10"
+            VerticalAlignment="Bottom">
             <Button
-                Height="32"
                 Command="{Binding ActionCommand}"
-                Content="Add Skill" />
+                Content="Добавить навык"
+                IsDefault="True" />
         </Border>
     </Grid>
 </UserControl>

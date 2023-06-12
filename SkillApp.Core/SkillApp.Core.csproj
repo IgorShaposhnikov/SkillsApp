@@ -78,6 +78,7 @@
     <Compile Include="Models\ISkill.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\SkillsProfile.cs" />
+    <Compile Include="Parsers\ExcelParser.cs" />
     <Compile Include="Printouts\DocxPrintout.cs" />
     <Compile Include="Printouts\ExcelPrintout.cs" />
     <Compile Include="Printouts\Models\Aspect.cs" />
@@ -114,5 +115,6 @@
   <ItemGroup>
     <None Include="bin\Debug\Xceed.Words.NET.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

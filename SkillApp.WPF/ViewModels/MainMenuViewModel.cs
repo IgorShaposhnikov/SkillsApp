@@ -93,9 +93,15 @@ namespace SkillApp.WPF.ViewModels
             NavigationStore.CurrentViewModel = tab.Content;
         }
 
-        public void LoadSkillsProfile(string path) 
+        // TODO: Переделать логику
+        public void LoadXmlSkillsProfile(string path) 
         {
-            _skillsProfileVM.Load(path);
+            _skillsProfileVM.LoadXml(path);
+        }
+
+        public void LoadExcelSkillsProfile(string path) 
+        {
+            _skillsProfileVM.LoadExcel(path);
         }
     }
 }

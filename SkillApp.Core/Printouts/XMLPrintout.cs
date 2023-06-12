@@ -35,6 +35,7 @@ namespace SkillApp.Core.Printouts
             return result;
         }
 
+        // TODO: Перенести в отдельный класс
         public static List<Skill> LoadSkillProfile(string path = "")
         {
             var result = LoadSkillProfileNotSorted(path);

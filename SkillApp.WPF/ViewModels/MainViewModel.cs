@@ -36,9 +36,14 @@ namespace SkillApp.WPF.ViewModels
         #region Public Methods
 
 
-        public void LoadProject(string path) 
+        public void LoadXmlProject(string path) 
         {
-            _mainMenuViewModel.LoadSkillsProfile(path);  
+            _mainMenuViewModel.LoadXmlSkillsProfile(path);  
+        }
+
+        public void LoadExcelProject(string path) 
+        {
+            _mainMenuViewModel.LoadExcelSkillsProfile(path);
         }
 
 

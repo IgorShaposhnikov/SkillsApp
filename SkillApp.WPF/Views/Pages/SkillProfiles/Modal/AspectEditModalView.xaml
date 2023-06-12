@@ -5,7 +5,7 @@
     xmlns:coreModels="clr-namespace:SkillApp.Core.Models;assembly=SkillApp.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:enums="clr-namespace:SkillApp.Core.Enums;assembly=SkillApp.Core"
-    xmlns:extentions="clr-namespace:SkillApp.Extensions"
+    xmlns:extentions="clr-namespace:SkillApp.WPF.Extensions"
     xmlns:local="clr-namespace:SkillApp.WPF.Views.Pages.SkillsProfile.Modal"
     xmlns:localVM="clr-namespace:SkillApp.WPF.ViewModels.SkillsProfile.Modal"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -17,9 +17,9 @@
 
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="48" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="48" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Border
@@ -29,12 +29,11 @@
             <Grid>
                 <TextBlock FontSize="20" Text="Редактирование аспекта" />
                 <Button
-                    Width="20"
-                    Height="20"
                     HorizontalAlignment="Right"
                     Command="{Binding CloseCommand}"
                     Content="X"
-                    IsCancel="True" />
+                    IsCancel="True"
+                    Style="{StaticResource DefaultGhostButtonTemplate}" />
             </Grid>
         </Border>
 
@@ -125,7 +124,7 @@
                                 SelectedValue="{Binding ExecutionFrequency}">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Converter={StaticResource EnumToStringConverter}}" />
+                                        <TextBlock Text="{Binding Converter={StaticResource EnumToStringConverter}}" TextWrapping="WrapWithOverflow" />
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
@@ -143,7 +142,13 @@
                                 FontSize="14"
                                 ItemsSource="{Binding Source={StaticResource aspectTypeFromEnum}}"
                                 SelectedIndex="0"
-                                SelectedValue="{Binding Type}" />
+                                SelectedValue="{Binding Type}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}" TextWrapping="WrapWithOverflow" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </StackPanel>
                     </Grid>
 
@@ -311,7 +316,6 @@
             Padding="8"
             VerticalAlignment="Bottom">
             <Button
-                Height="32"
                 Command="{Binding ActionCommand}"
                 Content="Сохранить изменения"
                 IsDefault="True" />

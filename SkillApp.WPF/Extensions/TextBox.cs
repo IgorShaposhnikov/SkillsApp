@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace SkillApp.Extensions
+namespace SkillApp.WPF.Extensions
 {
     public static class TextBox
     {

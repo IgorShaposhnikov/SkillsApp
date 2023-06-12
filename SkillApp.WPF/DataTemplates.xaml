@@ -16,9 +16,14 @@
     <ResourceDictionary.MergedDictionaries>
         <!--  Controls  -->
         <ResourceDictionary Source="Controls/ControlsRegister.xaml" />
+        <!--  Icons  -->
+        <ResourceDictionary Source="Resources/Assets/Icons.xaml" />
         <!--  Styles  -->
         <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
         <ResourceDictionary Source="Resources/Styles/DataGridStyle.xaml" />
+        <ResourceDictionary Source="Resources/Styles/ButtonStyle.xaml" />
+        <ResourceDictionary Source="Resources/Styles/TextBoxStyle.xaml" />
+        <ResourceDictionary Source="Resources/Styles/ComboBoxStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <viewmodels:MainViewModel x:Key="MainVM" />
