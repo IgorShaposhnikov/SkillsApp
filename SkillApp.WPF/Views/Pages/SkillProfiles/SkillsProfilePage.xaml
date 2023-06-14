@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:extensions="clr-namespace:SkillApp.WPF.Extensions"
     xmlns:local="clr-namespace:SkillApp.WPF.Views.Pages.SkillsProfile"
     xmlns:localVM="clr-namespace:SkillApp.WPF.ViewModels.SkillsProfile"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -19,6 +20,7 @@
 
             <Border Padding="5,10,50,10" Background="Transparent">
                 <Grid ShowGridLines="False">
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="0.7*" />
@@ -31,12 +33,14 @@
 
                     <TextBlock
                         Grid.Row="0"
+                        VerticalAlignment="Center"
                         FontSize="18"
                         FontWeight="Medium"
                         Text="Навыки" />
 
                     <WrapPanel Grid.Row="1">
                         <TextBlock
+                            VerticalAlignment="Center"
                             FontSize="14"
                             FontWeight="Medium"
                             Text="Должность: " />
@@ -47,13 +51,17 @@
 
                         <TextBlock
                             Margin="0,0,8,0"
+                            VerticalAlignment="Center"
                             FontSize="14"
                             TextWrapping="WrapWithOverflow">
                             <Run FontWeight="Medium" Text="Кол-во навыков: " />
                             <Run Text="{Binding Profile.SkillsCount, Mode=OneWay}" />
                         </TextBlock>
 
-                        <TextBlock Margin="0,0,8,0" FontSize="14">
+                        <TextBlock
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            FontSize="14">
                             <Run FontWeight="Medium" Text="Общее количество баллов: " />
                             <Run Text="{Binding Profile.SumScore, Mode=OneWay}" />
                         </TextBlock>
@@ -69,14 +77,32 @@
                             Height="32"
                             Margin="0,0,8,4"
                             HorizontalAlignment="Right"
-                            Command="{Binding OpenSkillFactoryCommand}"
-                            Content="Добавить навык" />
+                            Command="{Binding OpenSkillFactoryCommand}">
+                            <StackPanel Orientation="Horizontal">
+                                <Viewbox Height="20">
+                                    <Path
+                                        extensions:Path.StringData="{StaticResource AddCircle}"
+                                        Fill="White"
+                                        Stretch="Fill" />
+                                </Viewbox>
+                                <TextBlock Margin="8,0,0,0" Text="Добавить навык" />
+                            </StackPanel>
+                        </Button>
                         <Button
                             Height="32"
                             Margin="0,0,8,4"
                             HorizontalAlignment="Right"
-                            Command="{Binding SaveSkillsProfileCommand}"
-                            Content="Сохранить профиль" />
+                            Command="{Binding SaveSkillsProfileCommand}">
+                            <StackPanel Orientation="Horizontal">
+                                <Viewbox Height="20">
+                                    <Path
+                                        extensions:Path.StringData="{StaticResource Save}"
+                                        Fill="White"
+                                        Stretch="Fill" />
+                                </Viewbox>
+                                <TextBlock Margin="8,0,0,0" Text="Сохранить профиль" />
+                            </StackPanel>
+                        </Button>
                     </WrapPanel>
 
                 </Grid>
@@ -106,8 +132,10 @@
 
                 <DataGrid.Columns>
                     <DataGridCheckBoxColumn
+                        MinWidth="115"
+                        MaxWidth="115"
                         Binding="{Binding IsEnabled}"
-                        Header="Is Enabled"
+                        Header="Включить в ведомость"
                         IsReadOnly="False" />
 
                     <DataGridTextColumn
@@ -147,10 +175,25 @@
                     <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellSelectedTransparent}" IsReadOnly="True">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button
-                                    Command="{Binding Path=DataContext.OpenSkillEditModalCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                    CommandParameter="{Binding}"
-                                    Content="Редактировать" />
+                                <Button Command="{Binding Path=DataContext.OpenSkillEditModalCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}">
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <Viewbox
+                                            Width="16"
+                                            Height="16"
+                                            VerticalAlignment="Center">
+                                            <Path
+                                                extensions:Path.StringData="{StaticResource Edit}"
+                                                Fill="White"
+                                                Stretch="Fill" />
+                                        </Viewbox>
+
+                                        <TextBlock
+                                            Margin="8,0,0,0"
+                                            VerticalAlignment="Center"
+                                            Text="Редактировать" />
+                                    </StackPanel>
+                                </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -158,10 +201,25 @@
                     <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellSelectedTransparent}" IsReadOnly="True">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button
-                                    Command="{Binding Path=DataContext.ShowAspectsCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                    CommandParameter="{Binding}"
-                                    Content="Показать аспекты" />
+                                <Button Command="{Binding Path=DataContext.ShowAspectsCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}">
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <Viewbox
+                                            Width="16"
+                                            Height="16"
+                                            VerticalAlignment="Center">
+                                            <Path
+                                                extensions:Path.StringData="{StaticResource ListAlt}"
+                                                Fill="White"
+                                                Stretch="Fill" />
+                                        </Viewbox>
+
+                                        <TextBlock
+                                            Margin="8,0,0,0"
+                                            VerticalAlignment="Center"
+                                            Text="Показать аспекты" />
+                                    </StackPanel>
+                                </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -169,10 +227,25 @@
                     <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellSelectedTransparent}" IsReadOnly="True">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button
-                                    Command="{Binding Path=DataContext.DeleteSkillCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                    CommandParameter="{Binding}"
-                                    Content="Удалить" />
+                                <Button Command="{Binding Path=DataContext.DeleteSkillCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}">
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <Viewbox
+                                            Width="16"
+                                            Height="16"
+                                            VerticalAlignment="Center">
+                                            <Path
+                                                extensions:Path.StringData="{StaticResource Delete}"
+                                                Fill="White"
+                                                Stretch="Fill" />
+                                        </Viewbox>
+
+                                        <TextBlock
+                                            Margin="8,0,0,0"
+                                            VerticalAlignment="Center"
+                                            Text="Удалить" />
+                                    </StackPanel>
+                                </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

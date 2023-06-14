@@ -8,8 +8,8 @@ namespace SkillApp.WPF.ViewModels.SkillsProfile.Modal
         #region ModalViewModelBase
 
 
-        public override double Height => base.Height + 100;
-        public override double Width => base.Width + 100;
+        public override double Height => base.Height;
+        public override double Width => base.Width;
 
 
         #endregion ModalViewModelBase

@@ -13,14 +13,14 @@
     mc:Ignorable="d">
 
     <UserControl.Resources>
-        <DataTemplate DataType="{x:Type localVM:AspectTransferWrapper}">
+        <!--<DataTemplate DataType="{x:Type localVM:AspectTransferWrapper}">
             <Border Padding="8" Background="WhiteSmoke">
-                <StackPanel Orientation="Horizontal">
+                <WrapPanel Orientation="Horizontal">
                     <CheckBox IsChecked="{Binding IsSelected}" />
                     <TextBlock Text="{Binding Aspect.Description}" TextWrapping="WrapWithOverflow" />
-                </StackPanel>
+                </WrapPanel>
             </Border>
-        </DataTemplate>
+        </DataTemplate>-->
 
         <DataTemplate DataType="{x:Type objects:Skill}">
             <Border
@@ -28,12 +28,200 @@
                 Padding="4"
                 CornerRadius="5">
                 <TextBlock
-                    FontWeight="Medium"
                     FontSize="14"
-                    Foreground="Black"
-                    Text="{Binding Name}" />
+                    FontWeight="Medium"
+                    Text="{Binding Name}"
+                    TextWrapping="WrapWithOverflow" />
             </Border>
         </DataTemplate>
+
+        <!--  Tab Control  -->
+
+        <Style TargetType="{x:Type TabControl}">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabControl}">
+                        <Grid KeyboardNavigation.TabNavigation="Local">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Border
+                                Height="Auto"
+                                Padding="0,8"
+                                Background="#f4f4f7"
+                                CornerRadius="5"
+                                SnapsToDevicePixels="True">
+                                <TabPanel
+                                    x:Name="HeaderPanel"
+                                    Grid.Row="0"
+                                    HorizontalAlignment="Center"
+                                    Panel.ZIndex="1"
+                                    Background="Transparent"
+                                    IsItemsHost="True"
+                                    KeyboardNavigation.TabIndex="1" />
+                            </Border>
+
+                            <Border
+                                x:Name="Border"
+                                Grid.Row="1"
+                                Margin="0,8,0,0"
+                                Padding="8"
+                                Background="#f6f6f6"
+                                BorderBrush="#f4f4f7"
+                                BorderThickness="1"
+                                CornerRadius="10"
+                                KeyboardNavigation.DirectionalNavigation="Contained"
+                                KeyboardNavigation.TabIndex="2"
+                                KeyboardNavigation.TabNavigation="Local">
+
+                                <ContentPresenter
+                                    x:Name="PART_SelectedContentHost"
+                                    Margin="0"
+                                    ContentSource="SelectedContent" />
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border
+                            x:Name="Border"
+                            Height="Auto"
+                            Padding="16,8"
+                            Background="Transparent"
+                            CornerRadius="5">
+                            <ContentPresenter
+                                x:Name="ContentSite"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                ContentSource="Header"
+                                RecognizesAccessKey="True"
+                                TextBlock.FontSize="14"
+                                TextBlock.FontWeight="Medium" />
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected" />
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ColorAnimation
+                                                Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                To="{DynamicResource PrimaryColor}"
+                                                Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="MouseOver" />
+                                    <VisualState x:Name="Disabled" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--  ListBox  -->
+
+        <Style TargetType="{x:Type ListBox}">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+            <Setter Property="MinWidth" Value="120" />
+            <Setter Property="MinHeight" Value="95" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <Border
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="0">
+                            <ScrollViewer Margin="0" Focusable="false">
+                                <StackPanel Margin="2" IsItemsHost="True" />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SkillListBoxItem" TargetType="ListBoxItem">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border
+                            x:Name="Border"
+                            Padding="2"
+                            Background="WhiteSmoke"
+                            BorderBrush="Transparent"
+                            BorderThickness="1.5"
+                            CornerRadius="5"
+                            SnapsToDevicePixels="true"
+                            TextBlock.Foreground="Black">
+                            <ContentPresenter x:Name="ContentPresenter" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource BrandColorSolidBrush}" />
+                            </Trigger>
+
+                            <Trigger Property="IsSelected" Value="True">
+                                <Trigger.Setters>
+                                    <Setter TargetName="Border" Property="Background">
+                                        <Setter.Value>
+                                            <SolidColorBrush Opacity="0.5" Color="{DynamicResource BrandColor}" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger.Setters>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="AspectsListBoxItem" TargetType="ListBoxItem">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border
+                            x:Name="Border"
+                            Padding="2"
+                            BorderBrush="Transparent"
+                            BorderThickness="1.5"
+                            CornerRadius="5"
+                            SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="ContentPresenter" TextBlock.Foreground="Black" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </UserControl.Resources>
 
     <Grid Background="Transparent">
@@ -46,7 +234,8 @@
         <Border
             Padding="10"
             BorderBrush="Black"
-            BorderThickness="0,0,0,1">
+            BorderThickness="0,0,0,0.5"
+            SnapsToDevicePixels="True">
             <Grid>
                 <TextBlock FontSize="20" Text="Перемещение аспектов" />
                 <Button
@@ -60,95 +249,85 @@
 
         <!--  Body  -->
         <Border Grid.Row="1" Padding="10">
-            <Grid ShowGridLines="False">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+            <StackPanel>
+                <TextBlock
+                    Height="64"
+                    FontSize="16"
+                    FontWeight="Medium"
+                    TextWrapping="WrapWithOverflow">
+                    <Run Text="Выбранный навык: " />
+                    <Run Foreground="Green" Text="{Binding SelectedSkill.Name}" />
+                </TextBlock>
 
-                <Border
-                    Padding="0,8,0,16"
-                    BorderBrush="Black"
-                    BorderThickness="0,0,0,0.5">
-                    <Expander
-                        Margin="0,4,0,0"
-                        IsExpanded="True"
-                        IsTabStop="False">
+                <TabControl Margin="0,16,0,0" BorderBrush="Transparent">
+                    <TabItem BorderBrush="Transparent" Header="Доступные навыки">
+                        <Border
+                            Padding="8"
+                            Background="LightGray"
+                            CornerRadius="5">
+                            <ListBox
+                                MinHeight="64"
+                                Margin="0,0,0,0"
+                                ItemContainerStyle="{StaticResource SkillListBoxItem}"
+                                ItemsSource="{Binding Skills}"
+                                ScrollViewer.CanContentScroll="True"
+                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                SelectedItem="{Binding SelectedSkill}" />
+                        </Border>
+                    </TabItem>
+                    <TabItem BorderBrush="Transparent" Header="Доступные аспекты">
+                        <Border
+                            Padding="8"
+                            Background="LightGray"
+                            CornerRadius="5">
+                            <StackPanel>
 
-                        <Expander.Header>
-                            <Grid ShowGridLines="False">
-
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-
-                                <TextBlock
-                                    Margin="0,0,32,0"
-                                    FontSize="16"
-                                    FontWeight="Medium">
-                                    <Run Text="Доступные аспекты - " />
-                                    <Run Text="{Binding Aspects.Count, Mode=OneWay}" />
-                                </TextBlock>
+                                <StackPanel.Style>
+                                    <Style TargetType="{x:Type StackPanel}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Aspects.Count, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="0">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </StackPanel.Style>
 
                                 <CheckBox
                                     Grid.Column="1"
+                                    Margin="8,8,0,16"
                                     VerticalAlignment="Center"
-                                    Content="Выбрать все"
-                                    IsChecked="{Binding IsSelectedAll}" />
-                            </Grid>
-                        </Expander.Header>
+                                    Content="Выбрать все аспекты"
+                                    FontSize="14"
+                                    FontWeight="Medium"
+                                    IsChecked="{Binding IsSelectedAll, UpdateSourceTrigger=PropertyChanged}" />
 
-                        <ListBox
-                            ItemsSource="{Binding Aspects}"
-                            ScrollViewer.CanContentScroll="False"
-                            ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
-                    </Expander>
-                </Border>
-
-
-                <Border
-                    Grid.Row="1"
-                    Padding="0,8,0,16"
-                    BorderBrush="Black"
-                    BorderThickness="0,0,0,0.5">
-                    <WrapPanel Margin="0,8,0,8" Orientation="Horizontal">
-                        <TextBlock
-                            FontSize="16"
-                            FontWeight="Medium"
-                            TextWrapping="WrapWithOverflow">
-                            <Run Text="Выбранный навык: " />
-                            <Run Foreground="Green" Text="{Binding SelectedSkill.Name}" />
-                        </TextBlock>
-
-                    </WrapPanel>
-                </Border>
-
-                <Border
-                    Grid.Row="2"
-                    Padding="0,8,0,16"
-                    BorderBrush="Black"
-                    BorderThickness="0,0,0,0.5">
-                    <Expander Grid.Row="2" IsTabStop="False">
-                        <Expander.Header>
-                            <TextBlock FontSize="16" FontWeight="Medium">
-                                <Run Text="Доступные навыки - " />
-                                <Run Text="{Binding Skills.Count, Mode=OneWay}" />
-                            </TextBlock>
-                        </Expander.Header>
-                        <ListBox
-                            Grid.Row="4"
-                            MinHeight="64"
-                            Margin="0,0,0,0"
-                            ItemsSource="{Binding Skills}"
-                            SelectedItem="{Binding SelectedSkill}" />
-                    </Expander>
-                </Border>
-            </Grid>
+                                <ListBox
+                                    ItemContainerStyle="{StaticResource AspectsListBoxItem}"
+                                    ItemsSource="{Binding Aspects}"
+                                    ScrollViewer.CanContentScroll="True"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                    ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Padding="8" Background="WhiteSmoke">
+                                                <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsSelected}">
+                                                    <TextBlock
+                                                        FontSize="14"
+                                                        Foreground="Black"
+                                                        Text="{Binding Aspect.Description}"
+                                                        TextWrapping="WrapWithOverflow" />
+                                                </CheckBox>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </StackPanel>
+                        </Border>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
         </Border>
 
         <!--  Footer  -->

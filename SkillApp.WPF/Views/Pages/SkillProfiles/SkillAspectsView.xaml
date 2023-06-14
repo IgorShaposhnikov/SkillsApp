@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:extensions="clr-namespace:SkillApp.WPF.Extensions"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DataContext="{d:DesignInstance localVM:SkillAspectsViewModel}"
     d:DesignHeight="450"
@@ -81,11 +82,11 @@
                         <StackPanel Orientation="Horizontal">
 
                             <Viewbox
-                                Width="16"
-                                Height="16"
-                                VerticalAlignment="Center">
+                                Height="20"
+                                VerticalAlignment="Center"
+                                SnapsToDevicePixels="True">
                                 <Path
-                                    Data="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z"
+                                    extensions:Path.StringData="{StaticResource AddCircle}"
                                     Fill="White"
                                     Stretch="Fill" />
                             </Viewbox>
@@ -103,7 +104,7 @@
                         Command="{Binding SelectAspectsByTransferCommand}"
                         CommandParameter="{Binding}">
                         <Button.Style>
-                            <Style TargetType="{x:Type Button}">
+                            <Style BasedOn="{StaticResource DefaultBrandButtonTemplate}" TargetType="{x:Type Button}">
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding Aspects.Count}" Value="0">
                                         <Setter Property="Visibility" Value="Collapsed" />
@@ -113,18 +114,15 @@
                         </Button.Style>
                         <StackPanel Orientation="Horizontal">
 
-                            <Viewbox
-                                Width="16"
-                                Height="16"
-                                VerticalAlignment="Center">
+                            <Viewbox Height="18" VerticalAlignment="Center">
                                 <Path
-                                    Data="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z"
+                                    extensions:Path.StringData="{StaticResource Transfer}"
                                     Fill="White"
                                     Stretch="Fill" />
                             </Viewbox>
 
                             <TextBlock
-                                Margin="0,0,0,8"
+                                Margin="8,0,0,0"
                                 VerticalAlignment="Center"
                                 Text="Перенести аспект" />
                         </StackPanel>
@@ -275,10 +273,25 @@
                     IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button
-                                Command="{Binding Path=DataContext.EditAspectModalCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                CommandParameter="{Binding}"
-                                Content="Редактировать" />
+                            <Button Command="{Binding Path=DataContext.EditAspectModalCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}">
+                                <StackPanel Orientation="Horizontal">
+
+                                    <Viewbox
+                                        Width="16"
+                                        Height="16"
+                                        VerticalAlignment="Center">
+                                        <Path
+                                            extensions:Path.StringData="{StaticResource Edit}"
+                                            Fill="White"
+                                            Stretch="Fill" />
+                                    </Viewbox>
+
+                                    <TextBlock
+                                        Margin="8,0,0,0"
+                                        VerticalAlignment="Center"
+                                        Text="Редактировать" />
+                                </StackPanel>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -289,10 +302,25 @@
                     IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button
-                                Command="{Binding Path=DataContext.RemoveAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                CommandParameter="{Binding}"
-                                Content="Удалить" />
+                            <Button Command="{Binding Path=DataContext.RemoveAspectCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}">
+                                <StackPanel Orientation="Horizontal">
+
+                                    <Viewbox
+                                        Width="16"
+                                        Height="16"
+                                        VerticalAlignment="Center">
+                                        <Path
+                                            extensions:Path.StringData="{StaticResource Delete}"
+                                            Fill="White"
+                                            Stretch="Fill" />
+                                    </Viewbox>
+
+                                    <TextBlock
+                                        Margin="8,0,0,0"
+                                        VerticalAlignment="Center"
+                                        Text="Удалить" />
+                                </StackPanel>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

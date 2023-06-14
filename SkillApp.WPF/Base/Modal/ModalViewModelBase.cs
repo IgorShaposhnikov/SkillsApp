@@ -10,8 +10,8 @@ namespace SkillApp.WPF.Base.Modal
         protected const double DefaultWidth = 360;
         protected const double DefaultHeight = 420;
 
-        public virtual double Width => DefaultWidth;
-        public virtual double Height => DefaultHeight;
+        public virtual double Width => DefaultWidth + 200;
+        public virtual double Height => DefaultHeight + 200;
 
         public bool IsCloseWhenActionCommandExecuted { get; set; } = true;
 

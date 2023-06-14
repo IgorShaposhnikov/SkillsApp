@@ -26,9 +26,44 @@
                     x:Name="Arrow"
                     Data="M480-333 240-573l51-51 189 189 189-189 51 51-240 240Z"
                     Fill="#757981"
-                    Stretch="Fill" />
+                    RenderTransformOrigin="0.5, 0.5"
+                    Stretch="Fill">
+                    <Path.RenderTransform>
+                        <RotateTransform Angle="0" />
+                    </Path.RenderTransform>
+                </Path>
             </Viewbox>
+
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CheckStates">
+                    <VisualState x:Name="Checked">
+                        <Storyboard Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)">
+                            <DoubleAnimation
+                                From="0"
+                                To="-180"
+                                Duration="0:0:0.15" />
+                        </Storyboard>
+                    </VisualState>
+
+                    <VisualState x:Name="Unchecked" />
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
         </Grid>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="False">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)">
+                            <DoubleAnimation
+                                From="-180"
+                                To="0"
+                                Duration="0:0:0.15" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}">
@@ -41,6 +76,7 @@
                         x:Name="Border"
                         Padding="8,4"
                         Background="Transparent"
+                        BorderThickness="1.5"
                         CornerRadius="5"
                         SnapsToDevicePixels="true">
                         <ContentPresenter />
@@ -49,6 +85,10 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource BrandColorSolidBrush}" />
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource BrandColorSolidBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

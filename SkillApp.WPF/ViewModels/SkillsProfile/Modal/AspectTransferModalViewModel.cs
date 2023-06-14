@@ -1,32 +1,29 @@
-﻿using SkillApp.Core.Models;
+﻿using SkillApp.Core.Base;
+using SkillApp.Core.Models;
+using SkillApp.WPF.Base.Commands;
 using SkillApp.WPF.Base.Modal;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace SkillApp.WPF.ViewModels.SkillsProfile.Modal
 {
-    public class AspectTransferWrapper 
+    public class AspectTransferWrapper : VMBase
     {
-        private ICollection<IAspect> _selectedItems;
-
         public IAspect Aspect { get; }
 
         private bool _isSelected;
         public bool IsSelected 
-        { 
+        {
             get => _isSelected; set 
             {
                 _isSelected= value;
-
-                if (value) _selectedItems.Add(Aspect);
-                else _selectedItems.Remove(Aspect);
+                OnPropertyChanged();
             }
         }
 
-        public AspectTransferWrapper(IAspect aspect, ref ICollection<IAspect> selectedItems)
+        public AspectTransferWrapper(IAspect aspect)
         {
             Aspect = aspect;
-            _selectedItems = selectedItems;
         }
     }
 
@@ -36,23 +33,21 @@ namespace SkillApp.WPF.ViewModels.SkillsProfile.Modal
         #region ModalViewModelBase
 
 
-        public override double Height => base.Height + 100;
-        public override double Width => base.Width + 100;
+        public override double Height => base.Height;
+        public override double Width => base.Width;
 
 
         #endregion ModalViewModelBase
 
 
         private ISkill _aspectOwner;
-        private readonly IEnumerable<ISkill> _skills;
-
-        private IEnumerable<IAspect> _notAllSelectedAspects = new ObservableCollection<IAspect>();
 
 
         #region Properties
 
+
         private bool _isSelectedAll;
-        public bool IsSelectedAll 
+        public bool IsSelectedAll
         {
             get => _isSelectedAll; set 
             {
@@ -68,7 +63,7 @@ namespace SkillApp.WPF.ViewModels.SkillsProfile.Modal
 
         // --- Skills --- //
         private ISkill _selectedSkill;
-        public ISkill SelectedSkill 
+        public ISkill SelectedSkill
         {
             get => _selectedSkill; set 
             {
@@ -82,9 +77,6 @@ namespace SkillApp.WPF.ViewModels.SkillsProfile.Modal
         // --- Aspects --- //
         public ObservableCollection<AspectTransferWrapper> Aspects { get; } = new ObservableCollection<AspectTransferWrapper>();
 
-        private readonly ICollection<IAspect> _selectedAspects = new ObservableCollection<IAspect>();
-        public IEnumerable<IAspect> SelectedAspects { get => _selectedAspects; }
-
 
         #endregion Properties
 
@@ -95,7 +87,6 @@ namespace SkillApp.WPF.ViewModels.SkillsProfile.Modal
         public AspectTransferModalViewModel(ISkill aspectOwner, ICollection<ISkill> skills) 
         {
             skills.Remove(aspectOwner);
-            _skills = skills;
 
             Skills = skills;
             foreach (var item in Skills)
@@ -106,7 +97,7 @@ namespace SkillApp.WPF.ViewModels.SkillsProfile.Modal
 
             foreach (var aspect in aspectOwner.Aspects) 
             {
-                Aspects.Add(new AspectTransferWrapper(aspect, ref _selectedAspects));
+                Aspects.Add(new AspectTransferWrapper(aspect));
             }
 
             _aspectOwner = aspectOwner;
@@ -122,30 +113,32 @@ namespace SkillApp.WPF.ViewModels.SkillsProfile.Modal
 
         private void TransferAspects(object parameters)
         {
-            foreach (var wrapper in SelectedAspects)
+            foreach (var wrapper in Aspects)
             {
-                _aspectOwner.MoveAspectToAnotherSkill(SelectedSkill, wrapper);
+                if (wrapper.IsSelected) 
+                {
+                    _aspectOwner.MoveAspectToAnotherSkill(SelectedSkill, wrapper.Aspect);
+                }
             }
         }
 
 
         private void SelectAllAspects() 
         {
-            _notAllSelectedAspects = SelectedAspects;
-            foreach (var aspect in _aspectOwner.Aspects) 
-            { 
-                _selectedAspects.Add(aspect);
+            foreach (var aspect in Aspects) 
+            {
+                aspect.IsSelected = true;
             }
         }
 
         private void RemoveAllSelectAspects() 
         {
-            _selectedAspects.Clear();
-            foreach (var aspect in _notAllSelectedAspects) 
+            foreach (var aspect in Aspects)
             {
-                _selectedAspects.Add(aspect);
+                aspect.IsSelected = false;
             }
         }
+
 
         #endregion Private Methods
     }

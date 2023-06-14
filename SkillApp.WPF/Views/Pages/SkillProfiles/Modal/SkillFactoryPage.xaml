@@ -34,15 +34,9 @@
                     Padding="2"
                     HorizontalAlignment="Right"
                     Command="{Binding CloseCommand}"
+                    Content="X"
                     IsCancel="True"
-                    Style="{StaticResource DefaultGhostButtonTemplate}">
-                    <Viewbox MaxHeight="16">
-                        <Path
-                            extensions:Path.StringData="{StaticResource Close}"
-                            Fill="Black"
-                            Stretch="Fill" />
-                    </Viewbox>
-                </Button>
+                    Style="{StaticResource DefaultGhostButtonTemplate}" />
             </Grid>
         </Border>
 

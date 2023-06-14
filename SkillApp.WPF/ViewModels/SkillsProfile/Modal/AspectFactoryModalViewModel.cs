@@ -1,9 +1,7 @@
-﻿using SkillApp.Core.Base;
-using SkillApp.Core.Enums;
+﻿using SkillApp.Core.Enums;
 using SkillApp.Core.Models;
 using SkillApp.WPF.Base.Modal;
 using System;
-using System.Text.RegularExpressions;
 
 namespace SkillApp.WPF.ViewModels.SkillsProfile.Modal
 {
@@ -12,8 +10,8 @@ namespace SkillApp.WPF.ViewModels.SkillsProfile.Modal
         #region ModalViewModelBase
 
 
-        public override double Height => base.Height + 200;
-        public override double Width => base.Width + 200;
+        public override double Height => base.Height;
+        public override double Width => base.Width;
 
 
         #endregion ModalViewModelBase

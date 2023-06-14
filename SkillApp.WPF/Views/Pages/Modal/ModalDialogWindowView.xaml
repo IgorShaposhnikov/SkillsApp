@@ -10,9 +10,9 @@
     mc:Ignorable="d">
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="48" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="48" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Border
@@ -27,13 +27,14 @@
                     HorizontalAlignment="Right"
                     Command="{Binding CloseCommand}"
                     Content="X"
-                    IsCancel="True" />
+                    IsCancel="True"
+                    Style="{StaticResource DefaultGhostButtonTemplate}" />
             </Grid>
         </Border>
 
         <Border Grid.Row="1" Padding="8,16">
             <TextBlock
-                FontSize="16"
+                FontSize="20"
                 Text="{Binding Description}"
                 TextAlignment="Center"
                 TextWrapping="WrapWithOverflow">
@@ -51,7 +52,7 @@
             </TextBlock>
         </Border>
 
-        <Border Grid.Row="2">
+        <Border Grid.Row="2" Padding="8">
             <Button Command="{Binding ActionCommand}" Content="Удалить" />
         </Border>
     </Grid>
