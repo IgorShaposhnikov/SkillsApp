@@ -138,7 +138,7 @@
 
         <!--  ListBox  -->
 
-        <Style TargetType="{x:Type ListBox}">
+        <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
             <Setter Property="SnapsToDevicePixels" Value="true" />
             <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
@@ -265,15 +265,45 @@
                             Padding="8"
                             Background="LightGray"
                             CornerRadius="5">
-                            <ListBox
-                                MinHeight="64"
-                                Margin="0,0,0,0"
-                                ItemContainerStyle="{StaticResource SkillListBoxItem}"
-                                ItemsSource="{Binding Skills}"
-                                ScrollViewer.CanContentScroll="True"
-                                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                SelectedItem="{Binding SelectedSkill}" />
+                            <Grid>
+                                <ListBox
+                                    MinHeight="64"
+                                    Margin="0,0,0,0"
+                                    ItemContainerStyle="{StaticResource SkillListBoxItem}"
+                                    ItemsSource="{Binding Skills}"
+                                    ScrollViewer.CanContentScroll="True"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                    SelectedItem="{Binding SelectedSkill}">
+                                    <ListBox.Style>
+                                        <Style BasedOn="{StaticResource ListBoxStyle}" TargetType="{x:Type ListBox}">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Skills.Count, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="0">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ListBox.Style>
+                                </ListBox>
+
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Text="Отсутсвуют доступные навыки">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Skills.Count, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="0">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
                         </Border>
                     </TabItem>
                     <TabItem BorderBrush="Transparent" Header="Доступные аспекты">
@@ -281,49 +311,68 @@
                             Padding="8"
                             Background="LightGray"
                             CornerRadius="5">
-                            <StackPanel>
+                            <Grid>
+                                <StackPanel>
+                                    <StackPanel.Style>
+                                        <Style TargetType="{x:Type StackPanel}">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Aspects.Count, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="0">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </StackPanel.Style>
 
-                                <StackPanel.Style>
-                                    <Style TargetType="{x:Type StackPanel}">
-                                        <Setter Property="Visibility" Value="Visible" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Aspects.Count, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="0">
-                                                <Setter Property="Visibility" Value="Collapsed" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </StackPanel.Style>
+                                    <CheckBox
+                                        Grid.Column="1"
+                                        Margin="8,8,0,16"
+                                        VerticalAlignment="Center"
+                                        Content="Выбрать все аспекты"
+                                        FontSize="14"
+                                        FontWeight="Medium"
+                                        IsChecked="{Binding IsSelectedAll, UpdateSourceTrigger=PropertyChanged}" />
 
-                                <CheckBox
-                                    Grid.Column="1"
-                                    Margin="8,8,0,16"
+                                    <ListBox
+                                        ItemContainerStyle="{StaticResource AspectsListBoxItem}"
+                                        ItemsSource="{Binding Aspects}"
+                                        ScrollViewer.CanContentScroll="True"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        Style="{StaticResource ListBoxStyle}">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Padding="8" Background="WhiteSmoke">
+                                                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsSelected}">
+                                                        <TextBlock
+                                                            FontSize="14"
+                                                            Foreground="Black"
+                                                            Text="{Binding Aspect.Description}"
+                                                            TextWrapping="WrapWithOverflow" />
+                                                    </CheckBox>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </StackPanel>
+
+                                <TextBlock
+                                    HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Content="Выбрать все аспекты"
-                                    FontSize="14"
-                                    FontWeight="Medium"
-                                    IsChecked="{Binding IsSelectedAll, UpdateSourceTrigger=PropertyChanged}" />
-
-                                <ListBox
-                                    ItemContainerStyle="{StaticResource AspectsListBoxItem}"
-                                    ItemsSource="{Binding Aspects}"
-                                    ScrollViewer.CanContentScroll="True"
-                                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                    ScrollViewer.VerticalScrollBarVisibility="Auto">
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <Border Padding="8" Background="WhiteSmoke">
-                                                <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsSelected}">
-                                                    <TextBlock
-                                                        FontSize="14"
-                                                        Foreground="Black"
-                                                        Text="{Binding Aspect.Description}"
-                                                        TextWrapping="WrapWithOverflow" />
-                                                </CheckBox>
-                                            </Border>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
-                            </StackPanel>
+                                    FontSize="18"
+                                    Text="Отсутсвуют доступные навыки">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Aspects.Count, RelativeSource={RelativeSource AncestorType=UserControl}}" Value="0">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
                         </Border>
                     </TabItem>
                 </TabControl>

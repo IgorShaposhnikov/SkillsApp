@@ -23,5 +23,12 @@ namespace SkillApp.WPF.Views.Windows
                 ControlSPressed?.Invoke();
             }
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            Application.Current.Shutdown();
+        }
     }
 }

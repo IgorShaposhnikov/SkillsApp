@@ -16,9 +16,7 @@ namespace SkillApp.WPF
         {
             AppDomain.CurrentDomain.AssemblyResolve += AssemblyResolve;
             LoadDataTemplates();
-            _loadWindow = new LoadWindow();
-            _mainWindow = new MainWindow();
-            _app.Run(_loadWindow);
+            _app.Run(new LoadWindow());
         }
 
         public static void LoadDataTemplates()

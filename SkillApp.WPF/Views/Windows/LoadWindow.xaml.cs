@@ -75,7 +75,9 @@ namespace SkillApp.WPF.Views.Windows
 
         private void ChangeCurrentToMainWindow()
         {
-            Runtime.OpenMainWindow();
+            App.Current.MainWindow = new MainWindow();
+            this.Close();
+            App.Current.MainWindow.Show();
         }
 
 

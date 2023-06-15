@@ -40,7 +40,7 @@
 
         <Border Grid.Row="1" Padding="10">
             <StackPanel>
-                <TextBlock
+                <!--<TextBlock
                     FontSize="14"
                     FontWeight="Medium"
                     Text="Id" />
@@ -48,7 +48,7 @@
                     Margin="0,4,0,0"
                     extensions:TextBox.OnlyNumeric="Uint"
                     FontSize="14"
-                    Text="{Binding Id}" />
+                    Text="{Binding Id}" />-->
 
                 <TextBlock
                     Margin="0,8,0,0"

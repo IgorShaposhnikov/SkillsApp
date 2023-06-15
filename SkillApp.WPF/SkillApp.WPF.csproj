@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{12BE335F-9178-4334-A14A-60E2C0355BE6}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>SkillApp.WPF</RootNamespace>
     <AssemblyName>SkillApp</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
