@@ -78,8 +78,6 @@
     <Compile Include="Models\ISkill.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\SkillsProfile.cs" />
-    <Compile Include="Parsers\ExcelParser.cs" />
-    <Compile Include="Printouts\DocxPrintout.cs" />
     <Compile Include="Printouts\ExcelPrintout.cs" />
     <Compile Include="Printouts\Models\Aspect.cs" />
     <Compile Include="Printouts\Models\Explanation.cs" />

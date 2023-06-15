@@ -1,6 +1,5 @@
 ﻿using SkillApp.Core.Enums;
 using SkillApp.Core.Models;
-using SkillApp.Core.Parsers;
 using SkillApp.Core.Printouts;
 using SkillApp.WPF.Base;
 using SkillApp.WPF.Base.Commands;
@@ -8,6 +7,7 @@ using SkillApp.WPF.Base.Store;
 using SkillApp.WPF.ViewModels.Modal;
 using SkillApp.WPF.ViewModels.SkillsProfile.Modal;
 using SkillApp.WPF.Views.Pages.Modal;
+using SkillApp.WPF.Views.Windows;
 using System;
 using System.Linq;
 using System.Windows.Input;
@@ -83,6 +83,21 @@ namespace SkillApp.WPF.ViewModels.SkillsProfile
             }));
         }
 
+        //private RelayCommand _uploadSkillsProfileCommand;
+        //public ICommand UploadSkillsProfileCommand
+        //{
+        //    get => _uploadSkillsProfileCommand ?? (_uploadSkillsProfileCommand = new RelayCommand(obj =>
+        //    {
+        //        ModalNavigationStore.Instance.Open(new ModalDialogWindowViewModel(() => 
+        //        {
+        //            Runtime.OpenLoadWindow();
+        //        }, 
+        //        () => { },
+        //        "Смена профиля навыков",
+        //        "Вы действительно хотите сменить профиль навыков?\nЕсли текущий профиль не сохранён, все изменения в нём будут утеряны"));
+        //    }));
+        //}
+
 
         #endregion Commands
 
@@ -92,6 +107,7 @@ namespace SkillApp.WPF.ViewModels.SkillsProfile
 
         public SkillsProfileViewModel(Action<VMBase> changeCurrentPage)
         {
+            MainWindow.ControlSPressed += () => { SaveSkillsProfileCommand.Execute(null); };
             _changeCurrentPage = changeCurrentPage;
             //Load();
         }
@@ -144,7 +160,7 @@ namespace SkillApp.WPF.ViewModels.SkillsProfile
 
         public void LoadExcel(string path) 
         {
-            var skills = ExcelParser.Load(path);
+            
         }
 
 

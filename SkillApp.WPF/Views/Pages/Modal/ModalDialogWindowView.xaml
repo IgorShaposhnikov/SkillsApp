@@ -53,7 +53,7 @@
         </Border>
 
         <Border Grid.Row="2" Padding="8">
-            <Button Command="{Binding ActionCommand}" Content="Удалить" />
+            <Button Command="{Binding ActionCommand}" Content="Подтвердить" />
         </Border>
     </Grid>
 </UserControl>

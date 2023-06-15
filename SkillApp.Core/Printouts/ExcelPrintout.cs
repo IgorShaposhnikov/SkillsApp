@@ -1,7 +1,6 @@
 ﻿using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using SkillApp.Core.Enums;
-using SkillApp.Core.Models;
 using SkillApp.Core.Tools;
 using System;
 using System.Collections.Generic;
@@ -34,15 +33,17 @@ namespace SkillApp.Core.Printouts
                 sheet.Cells[8, i].Value = headerValues[i - 4];
             }
 
-            var rowsCount = 0;
+
+            var skillsScoreSum = 0.0;
             var t = 9;
             for (var i = 0; i < skills.Count; i++)
             {
                 SetSkillStyle(sheet, skills[i], t + i);
+                skillsScoreSum += skills[i].Score; 
                 t += skills[i].Aspects.Length;
             }
 
-            InitFooter(sheet, t + skills.Count, score:skillProfile.SumScore);
+            InitFooter(sheet, t + skills.Count, score: skillsScoreSum);
             excelPackage.Save();
         }
 

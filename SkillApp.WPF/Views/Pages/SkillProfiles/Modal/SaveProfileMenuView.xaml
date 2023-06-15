@@ -36,14 +36,10 @@
             <Grid>
                 <StackPanel>
                     <StackPanel>
-                        <Grid>
-                            <TextBlock
-                                FontSize="14"
-                                FontWeight="Medium"
-                                Text="Название файла" />
-
-                            <Button HorizontalAlignment="Right" Content="Сбросить" />
-                        </Grid>
+                        <TextBlock
+                            FontSize="14"
+                            FontWeight="Medium"
+                            Text="Название файла" />
                         <TextBox FontSize="14" Text="{Binding ProfileName}" />
                     </StackPanel>
 
@@ -102,8 +98,8 @@
             </Grid>
         </Border>
 
-        <Grid Grid.Row="2">
-            <Button Command="{Binding ActionCommand}" Content="Save" />
-        </Grid>
+        <Border Grid.Row="2" Padding="8">
+            <Button Command="{Binding ActionCommand}" Content="Сохранить" />
+        </Border>
     </Grid>
 </UserControl>

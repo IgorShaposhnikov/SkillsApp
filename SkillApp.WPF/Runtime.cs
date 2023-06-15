@@ -5,23 +5,41 @@ using System.Windows;
 
 namespace SkillApp.WPF
 {
-    public class Runtime
+    public static class Runtime
     {
         private static App _app = new App();
+        private static Window _loadWindow;
+        private static Window _mainWindow;
 
         [STAThread]
-        static void Main() 
+        static void Main()
         {
             AppDomain.CurrentDomain.AssemblyResolve += AssemblyResolve;
             LoadDataTemplates();
-            _app.Run(new LoadWindow());
+            _loadWindow = new LoadWindow();
+            _mainWindow = new MainWindow();
+            _app.Run(_loadWindow);
         }
 
         public static void LoadDataTemplates()
         {
             _app.Resources.MergedDictionaries.Add(
                 new ResourceDictionary() { Source = new Uri("pack://application:,,,/DataTemplates.xaml") });
-        } 
+        }
+
+        //public static void OpenLoadWindow() 
+        //{
+        //    App.Current.MainWindow.Close();
+        //    App.Current.MainWindow = new LoadWindow();
+        //    App.Current.MainWindow.Show();
+        //}
+
+        //public static void OpenMainWindow()
+        //{
+        //    App.Current.MainWindow.Close();
+        //    App.Current.MainWindow = new MainWindow();
+        //    App.Current.MainWindow.Show();
+        //}
 
         public static Assembly AssemblyResolve(object sender, ResolveEventArgs args)
         {

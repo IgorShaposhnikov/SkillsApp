@@ -103,6 +103,21 @@
                                 <TextBlock Margin="8,0,0,0" Text="Сохранить профиль" />
                             </StackPanel>
                         </Button>
+                        <!--<Button
+                            Height="32"
+                            Margin="0,0,8,4"
+                            HorizontalAlignment="Right"
+                            Command="{Binding UploadSkillsProfileCommand}">
+                            <StackPanel Orientation="Horizontal">
+                                <Viewbox Height="20">
+                                    <Path
+                                        extensions:Path.StringData="{StaticResource Upload}"
+                                        Fill="White"
+                                        Stretch="Fill" />
+                                </Viewbox>
+                                <TextBlock Margin="8,0,0,0" Text="Сменить профиль" />
+                            </StackPanel>
+                        </Button>-->
                     </WrapPanel>
 
                 </Grid>

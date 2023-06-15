@@ -11,6 +11,7 @@
     MinHeight="800"
     d:DataContext="{StaticResource MainVM}"
     Icon="pack://Application:,,,/logo.ico"
+    KeyDown="Window_KeyDown"
     WindowState="Maximized"
     mc:Ignorable="d">
     <Grid>
